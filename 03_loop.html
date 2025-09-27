@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The TenK 6 Methodology - The TenK 6 Handbook</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="A pocket playbook for indie founders: six repeatable loops to reach $10k MRR through evidence-based experimentation and consistent momentum.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The TenK 6 Handbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/inkylabs-dev/tenk6" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chapter-3-the-tenk-6-methodology"><a class="header" href="#chapter-3-the-tenk-6-methodology">Chapter 3: The TenK 6 Methodology</a></h1>
+<p>TenK 6 is a small operating rhythm. It helps you decide what to do next and then prove that it mattered. You run short cycles. Each one ends with evidence you can point to: a screenshot, a link, a number. Over time, that evidence stacks into momentum.</p>
+<h2 id="why-this-loop"><a class="header" href="#why-this-loop">Why This Loop</a></h2>
+<p>You don’t stall because you lack skill. You stall when next steps blur. TenK 6 clears the path. It moves you from intention to proof in six moves. It works at any pace—an evening after work or a focused weekend—because the steps stay small and clear. The loop reduces cognitive load: fewer choices, fewer resets, and more time with hands on the right work.</p>
+<h2 id="who-its-for"><a class="header" href="#who-its-for">Who It’s For</a></h2>
+<p>This loop fits indie founders who want structure without ceremony, solo builders who want fewer decisions and more progress, and small teams that want accountability without a calendar full of meetings. It adapts to early idea hunting and later optimization because the same six steps work whether you’re at zero users or shipping polish to thousands.</p>
+<h2 id="step-1-list"><a class="header" href="#step-1-list">Step 1: List</a></h2>
+<p>Start wide. Write five concrete options you could attempt next. Force breadth before focus. Don’t justify them yet. One sentence per option is enough. The goal is to see choices on the same page so you can choose with a cooler head. Listing protects you from anchoring on the first shiny thing and reveals alternatives you’d otherwise ignore.</p>
+<p>Example: “Add a pricing page,” “Record a 2‑minute demo,” “Interview three churned users,” “Test a landing page for feature X,” “Email five prospects with a short offer.”</p>
+<h2 id="step-2-pick"><a class="header" href="#step-2-pick">Step 2: Pick</a></h2>
+<p>Choose one. Commit for a single loop. Say “not now” to the rest. You trade optionality for momentum on purpose. A clear pick removes second‑guessing and protects your attention for the next few days. Most decisions are reversible at this scale; choosing quickly costs less than spinning in place.</p>
+<p>Good picks feel doable in a week and a little uncomfortable. If it scares you because someone might see it, you’re probably on the right track.</p>
+<h2 id="step-3-ship"><a class="header" href="#step-3-ship">Step 3: Ship</a></h2>
+<p>Put a small, testable slice in the world. Prefer ugly and live over perfect and hidden. A thin page, a rough prototype, a basic email—anything a real person can touch. Shipping pulls your idea out of your head and into reality where it can meet feedback. Fake doors and manual workflows are valid—speed to signal beats engineering completeness in early loops.</p>
+<p>Ask yourself: “What can I launch in 48 hours that proves this exists?” Then cut that in half.</p>
+<h2 id="step-4-ask"><a class="header" href="#step-4-ask">Step 4: Ask</a></h2>
+<p>Get feedback from real people. Post. DM. Email. Show it to someone who might care and watch what they do. Don’t fish for praise. Listen for behavior—clicks, replies, specific questions. Curiosity teaches more than compliments. Ask short, concrete questions: “What did you expect here?” “What would you try instead?”</p>
+<p>A simple line works: “I’m testing this—curious if it solves your problem.”</p>
+<h2 id="step-5-measure"><a class="header" href="#step-5-measure">Step 5: Measure</a></h2>
+<p>Track one useful signal. Define it up front so you don’t move the goalposts later. It might be sign‑ups, replies, a click‑through, or a paid trial. Look at what actually happened, not what you hoped would happen. Choose a metric that matches the loop’s purpose—activation for onboarding work, revenue for pricing trials, reach for distribution.</p>
+<p>One number is enough for a loop. You can add nuance later.</p>
+<h2 id="step-6-share"><a class="header" href="#step-6-share">Step 6: Share</a></h2>
+<p>Tell the story. Say what you tried, what changed, and what you’ll do next. Sharing builds accountability and draws in people who care about the same problems. It also gives future‑you a record of decisions and results. A simple structure works: context → action → evidence → next step.</p>
+<p>Keep it short. A screenshot and three sentences beat a silent masterpiece.</p>
+<h2 id="principles-that-keep-it-honest"><a class="header" href="#principles-that-keep-it-honest">Principles That Keep It Honest</a></h2>
+<p>Evidence beats intuition. Count proof, not plans. Move one step at a time and finish with evidence before moving on. Keep pace flexible—some weeks sprint, some weeks crawl—but don’t let the loop stop. Reflect weekly so learning sticks and informs the next pick.</p>
+<h2 id="tracks-to-aim-your-loop"><a class="header" href="#tracks-to-aim-your-loop">Tracks to Aim Your Loop</a></h2>
+<p>You can point the same six steps at different bottlenecks. When you need demand, run a Validate loop to prove people care about the problem. When you need attention, run a Distribute loop to reach more of the right people. When you need revenue, run a Monetize loop to convert attention into dollars. When you need durability, run a Retain loop to help customers stick around. Switch aims when your constraint moves; don’t outrun acquisition if activation still fails.</p>
+<p>You don’t change the loop. You change the aim.</p>
+<h2 id="what-makes-it-work"><a class="header" href="#what-makes-it-work">What Makes It Work</a></h2>
+<p>TenK 6 doesn’t predict the future. It shortens it. Each loop expands your options, forces a decision, creates evidence, and builds accountability. The compounding effect turns scattered effort into steady growth. Proof stacks; decisions get easier; the next step gets clearer.</p>
+<p>In the next chapter, you’ll start where every loop begins: List.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="02_why.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="04_list.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="02_why.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="04_list.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
