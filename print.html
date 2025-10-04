@@ -1,0 +1,1330 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The TenK 6 Handbook</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="A pocket playbook for indie founders: six repeatable loops to reach $10k MRR through evidence-based experimentation and consistent momentum.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The TenK 6 Handbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/inkylabs-dev/tenk6" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This handbook serves as a guide to turn ideas into products people use. It’s for engineers, designers, and solo founders who can build but want steady momentum, early validation, and clear feedback. The approach stays simple on purpose: small steps, fast learning, steady progress.</p>
+<p>It comes from over 15 years shipping software and more than 60 side projects. Most stopped at prototype. The pattern was the same: build, polish, launch quietly, see little usage, move on. Skill wasn’t the problem. Process, feedback, and momentum were.</p>
+<p>TenK 6 breaks that pattern. It’s a simple loop: focus effort, get real feedback, keep building. No over‑engineering. No quiet launches.</p>
+<h2 id="the-tenk-6-loop"><a class="header" href="#the-tenk-6-loop">The TenK 6 Loop</a></h2>
+<ol>
+<li>List: Write a small set of concrete ideas.</li>
+<li>Pick: Choose exactly one to do next.</li>
+<li>Ship: Deliver the smallest testable slice.</li>
+<li>Ask: Put it in front of real people.</li>
+<li>Measure: Track a few clear signals.</li>
+<li>Share: Say what happened and what’s next.</li>
+</ol>
+<p>Repeat. Keep cycles short so the next step stays obvious. The goal isn’t more code. It’s clear signals and steady momentum.</p>
+<p>Why this matters: most indie projects fail from weak user contact, not lack of skill. TenK 6 makes user contact part of every cycle.</p>
+<h3 id="notes-on-the-steps"><a class="header" href="#notes-on-the-steps">Notes on the Steps</a></h3>
+<ul>
+<li>List: Capture a few specific ideas you can do in days.</li>
+<li>Pick: Commit to one. Cut context switching. Set a finish line.</li>
+<li>Ship: Release the smallest version that gets real feedback. Skip gold‑plating.</li>
+<li>Ask: Watch what people do. Don’t pitch. Look for behavior, not opinions.</li>
+<li>Measure: Choose a few signals up front. Prefer sharper tests over bigger scope.</li>
+<li>Share: Note what happened and what changes next. Keep it brief and honest.</li>
+</ul>
+<h2 id="principles"><a class="header" href="#principles">Principles</a></h2>
+<ul>
+<li>Ship beats polish: visible progress &gt; invisible perfection.</li>
+<li>Small boxes force choices: tight time and scope surface priorities.</li>
+<li>Test conviction: treat enthusiasm as a hypothesis.</li>
+<li>Share often: updates reduce isolation and invite help.</li>
+</ul>
+<h2 id="who-its-for"><a class="header" href="#who-its-for">Who It’s For</a></h2>
+<p>For independent builders and small teams who want a simple operating rhythm. It fits side projects with limited hours and early product phases where demand is the main risk.</p>
+<h2 id="how-to-use-this-handbook"><a class="header" href="#how-to-use-this-handbook">How to Use This Handbook</a></h2>
+<ul>
+<li>Read once to see the loop.</li>
+<li>Pick a small idea and run one cycle end to end.</li>
+<li>Note the plan, changes, and what you learned.</li>
+<li>Share a short update at the end of each cycle.</li>
+<li>Repeat. Tune scope to keep cadence.</li>
+</ul>
+<h2 id="what-to-expect"><a class="header" href="#what-to-expect">What to Expect</a></h2>
+<p>Early cycles bring small wins and strong learning. Over time, shipping, asking, and measuring cut guesswork and focus effort on what works. Retire weak ideas early to save time for the ones with traction.</p>
+<h2 id="indie10k"><a class="header" href="#indie10k">Indie10k</a></h2>
+<p>Indie10k came from using these principles again and again. Aim for sustainability, not perfection. TenK 6 is the operating rhythm behind that work. This handbook distills it so you can use it in any domain or stack.</p>
+<h2 id="closing"><a class="header" href="#closing">Closing</a></h2>
+<p>If you start strong and abandon quietly, you’re not alone. Cadence and process separate code that piles up from products that grow. TenK 6 gives you a small, dependable loop for both.</p>
+<p>By the end, you’ll plan and run TenK 6 cycles, judge outcomes with evidence, and decide when to persevere, adapt, or stop. Move steadily toward products people value.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-1-why-indie-projects-fail"><a class="header" href="#chapter-1-why-indie-projects-fail">Chapter 1: Why Indie Projects Fail</a></h1>
+<p>Indie projects don’t fail because you can’t code. They fail because ideas turn into domains, repos, and prototypes—but never turn into products people use. You pour weeks into “almost there,” polish the edges, then lose steam. Someone asks how it’s going. You change the subject.</p>
+<p>You’re not alone. Most solo builders carry a quiet archive of half-finished work. Different ideas, same ending.</p>
+<h2 id="the-pattern-that-drains-you"><a class="header" href="#the-pattern-that-drains-you">The Pattern That Drains You</a></h2>
+<p>The loop looks familiar:</p>
+<p>Build → Polish → Nobody uses it → Move on → Repeat.</p>
+<p>Zoom in and it’s even clearer:</p>
+<ul>
+<li>The spark: a late-night idea feels obvious and exciting.</li>
+<li>The build: you sprint for a week and carve out half a product.</li>
+<li>The polish: you sweat the logo, rethink the architecture, chase pixel perfection.</li>
+<li>The silence: you launch softly. Crickets.</li>
+<li>The abandon: you convince yourself it wasn’t the right idea and switch tracks.</li>
+</ul>
+<p>Do this a few times and you train yourself to start strong and finish nowhere. You get faster at beginnings and slower at endings. Motivation dips. You think the answer is a better idea. It isn’t.</p>
+<h2 id="three-traps"><a class="header" href="#three-traps">Three Traps</a></h2>
+<p>You don’t stall from lack of talent. You stall because you hit predictable traps.</p>
+<p>Overbuilding shows up first. You reach for a perfect architecture when a cardboard mock would prove the point. You design a system that can scale to a million users when you haven’t shown one person cares. Scope feels like progress, but it hides the risk you should face now.</p>
+<p>Hiding follows. You keep the work private because a quiet room feels safer than a blunt “no.” You plan to show people “when it’s ready.” It never is. Secrecy blocks the small conversations that uncover simple wins and obvious cuts.</p>
+<p>Then momentum fades. Without short feedback loops, every step gets heavier. You pause for a week, then two. Picking the work back up feels like lifting a cold barbell. Projects slow until they stop.</p>
+<p>Together, these traps produce one outcome: you start a lot and finish little. Effort spreads thin. Evidence stays scarce.</p>
+<h2 id="the-real-problem"><a class="header" href="#the-real-problem">The Real Problem</a></h2>
+<p>For years I blamed the idea, the market, the timing. I told myself I needed more time. Or better marketing. Or a cleaner stack. After enough false starts, the truth landed: the ideas weren’t the problem. The process was.</p>
+<p>I had adrenaline for starts and no rhythm for middles. I didn’t collect evidence. I didn’t close loops. I couldn’t point to proof that the last week moved me forward.</p>
+<h2 id="why-big-playbooks-dont-fit"><a class="header" href="#why-big-playbooks-dont-fit">Why Big Playbooks Don’t Fit</a></h2>
+<p>Most startup advice assumes teams, budgets, and long timelines. You don’t have those. You have evenings, weekends, and a brain that wants to build. A forty‑slide funnel deck won’t help you choose what to do tonight. You need a move you can make in hours and a way to tell if it mattered.</p>
+<h2 id="what-works-instead"><a class="header" href="#what-works-instead">What Works Instead</a></h2>
+<p>Replace guesswork with a small loop you can run on repeat. Focus on six actions that force contact with reality. Write options. Choose one. Ship a thin slice. Ask real people. Measure a single signal. Share what happened. Each cycle ends with proof you can keep.</p>
+<p>That loop is TenK 6. It won’t make ideas easy. It will make progress visible. And once progress shows up on the page—screenshots, numbers, links—momentum follows.</p>
+<p>In the next chapter, you’ll see how the loop works and how to run your first pass without burning a month.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-3-the-tenk-6-methodology"><a class="header" href="#chapter-3-the-tenk-6-methodology">Chapter 3: The TenK 6 Methodology</a></h1>
+<p>TenK 6 is a small operating rhythm. It helps you decide what to do next and then prove that it mattered. You run short cycles. Each one ends with evidence you can point to: a screenshot, a link, a number. Over time, that evidence stacks into momentum.</p>
+<h2 id="why-this-loop"><a class="header" href="#why-this-loop">Why This Loop</a></h2>
+<p>You don’t stall because you lack skill. You stall when next steps blur. TenK 6 clears the path. It moves you from intention to proof in six moves. It works at any pace—an evening after work or a focused weekend—because the steps stay small and clear. The loop reduces cognitive load: fewer choices, fewer resets, and more time with hands on the right work.</p>
+<h2 id="who-its-for-1"><a class="header" href="#who-its-for-1">Who It’s For</a></h2>
+<p>This loop fits indie founders who want structure without ceremony, solo builders who want fewer decisions and more progress, and small teams that want accountability without a calendar full of meetings. It adapts to early idea hunting and later optimization because the same six steps work whether you’re at zero users or shipping polish to thousands.</p>
+<h2 id="step-1-list"><a class="header" href="#step-1-list">Step 1: List</a></h2>
+<p>Start wide. Write five concrete options you could attempt next. Force breadth before focus. Don’t justify them yet. One sentence per option is enough. The goal is to see choices on the same page so you can choose with a cooler head. Listing protects you from anchoring on the first shiny thing and reveals alternatives you’d otherwise ignore.</p>
+<p>Example: “Add a pricing page,” “Record a 2‑minute demo,” “Interview three churned users,” “Test a landing page for feature X,” “Email five prospects with a short offer.”</p>
+<h2 id="step-2-pick"><a class="header" href="#step-2-pick">Step 2: Pick</a></h2>
+<p>Choose one. Commit for a single loop. Say “not now” to the rest. You trade optionality for momentum on purpose. A clear pick removes second‑guessing and protects your attention for the next few days. Most decisions are reversible at this scale; choosing quickly costs less than spinning in place.</p>
+<p>Good picks feel doable in a week and a little uncomfortable. If it scares you because someone might see it, you’re probably on the right track.</p>
+<h2 id="step-3-ship"><a class="header" href="#step-3-ship">Step 3: Ship</a></h2>
+<p>Put a small, testable slice in the world. Prefer ugly and live over perfect and hidden. A thin page, a rough prototype, a basic email—anything a real person can touch. Shipping pulls your idea out of your head and into reality where it can meet feedback. Fake doors and manual workflows are valid—speed to signal beats engineering completeness in early loops.</p>
+<p>Ask yourself: “What can I launch in 48 hours that proves this exists?” Then cut that in half.</p>
+<h2 id="step-4-ask"><a class="header" href="#step-4-ask">Step 4: Ask</a></h2>
+<p>Get feedback from real people. Post. DM. Email. Show it to someone who might care and watch what they do. Don’t fish for praise. Listen for behavior—clicks, replies, specific questions. Curiosity teaches more than compliments. Ask short, concrete questions: “What did you expect here?” “What would you try instead?”</p>
+<p>A simple line works: “I’m testing this—curious if it solves your problem.”</p>
+<h2 id="step-5-measure"><a class="header" href="#step-5-measure">Step 5: Measure</a></h2>
+<p>Track one useful signal. Define it up front so you don’t move the goalposts later. It might be sign‑ups, replies, a click‑through, or a paid trial. Look at what actually happened, not what you hoped would happen. Choose a metric that matches the loop’s purpose—activation for onboarding work, revenue for pricing trials, reach for distribution.</p>
+<p>One number is enough for a loop. You can add nuance later.</p>
+<h2 id="step-6-share"><a class="header" href="#step-6-share">Step 6: Share</a></h2>
+<p>Tell the story. Say what you tried, what changed, and what you’ll do next. Sharing builds accountability and draws in people who care about the same problems. It also gives future‑you a record of decisions and results. A simple structure works: context → action → evidence → next step.</p>
+<p>Keep it short. A screenshot and three sentences beat a silent masterpiece.</p>
+<h2 id="principles-that-keep-it-honest"><a class="header" href="#principles-that-keep-it-honest">Principles That Keep It Honest</a></h2>
+<p>Evidence beats intuition. Count proof, not plans. Move one step at a time and finish with evidence before moving on. Keep pace flexible—some weeks sprint, some weeks crawl—but don’t let the loop stop. Reflect weekly so learning sticks and informs the next pick.</p>
+<h2 id="tracks-to-aim-your-loop"><a class="header" href="#tracks-to-aim-your-loop">Tracks to Aim Your Loop</a></h2>
+<p>You can point the same six steps at different bottlenecks. When you need demand, run a Validate loop to prove people care about the problem. When you need attention, run a Distribute loop to reach more of the right people. When you need revenue, run a Monetize loop to convert attention into dollars. When you need durability, run a Retain loop to help customers stick around. Switch aims when your constraint moves; don’t outrun acquisition if activation still fails.</p>
+<p>You don’t change the loop. You change the aim.</p>
+<h2 id="what-makes-it-work"><a class="header" href="#what-makes-it-work">What Makes It Work</a></h2>
+<p>TenK 6 doesn’t predict the future. It shortens it. Each loop expands your options, forces a decision, creates evidence, and builds accountability. The compounding effect turns scattered effort into steady growth. Proof stacks; decisions get easier; the next step gets clearer.</p>
+<p>In the next chapter, you’ll start where every loop begins: List.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-4-the-first-step--list"><a class="header" href="#chapter-4-the-first-step--list">Chapter 4: The First Step — List</a></h1>
+<p>If TenK 6 is a map, List is the trailhead. It looks small—almost too simple—but it sets your direction. Start wide and you avoid false certainty. Start narrow and you risk months on the wrong bet.</p>
+<h2 id="why-list-matters"><a class="header" href="#why-list-matters">Why List Matters</a></h2>
+<p>Most builders fall for the first shiny idea. You picture the UI, feel the dopamine hit, and dive into code. That rush is real, but it isn’t reliable. Listing five ideas breaks the spell. It pulls you back to options. It reminds you that ideas are cheap; evidence is not.</p>
+<p>When you put five ideas on the same page, you stop romanticizing a favorite and you start comparing tradeoffs. Patterns surface. A theme might show up across options—like “help people start” or “cut setup time.” You feel freer to test instead of defend because you haven’t sworn loyalty to one path yet. You also spot “adjacent possibles”—small variants that improve the idea without inflating scope.</p>
+<p>That’s the point. List separates exploring from committing. Explore first. Commit next.</p>
+<h2 id="a-real-first-list"><a class="header" href="#a-real-first-list">A Real First List</a></h2>
+<p>On a slow Tuesday, I stared at four dull options. Here’s one that kicked off a real loop:</p>
+<ol>
+<li>Sudoku game.</li>
+<li>YouTube content idea generator.</li>
+<li>Simple video editor (CapCut/Canva alternative).</li>
+<li>Growth coach for indie builders.</li>
+<li>A cross word game.</li>
+</ol>
+<p>Number 4 became Indie10k. The win wasn’t the selection. The win was forcing five options onto the page before choosing.</p>
+<h2 id="how-to-list-well"><a class="header" href="#how-to-list-well">How to List Well</a></h2>
+<p>Keep it light. One sentence per idea. Skip specs and diagrams. You’re capturing candidates, not committing to projects. Timebox yourself to fifteen minutes so momentum stays high. If an idea scares you because real people might see it, include it. Post the list somewhere you’ll see it again—a notes app, a doc, or a small public post if you want accountability. If you’re stuck, write one “anti‑idea” (what you would never build) to jog new angles.</p>
+<p>You don’t need a framework to list. You need a timer and a place to type.</p>
+<h2 id="common-missteps"><a class="header" href="#common-missteps">Common Missteps</a></h2>
+<p>Researching TAM before you list drags you into analysis when you need options. Treating ideas like commitments loads emotion onto a step that should feel light. Stopping at one because it “feels right” turns a guess into a plan. Write all five. You can still pick the first one—after you see it next to four others. The act of writing options is the work; good picks come from seeing choices clearly.</p>
+<h2 id="a-simple-prompt"><a class="header" href="#a-simple-prompt">A Simple Prompt</a></h2>
+<p>If you get stuck, use this: “What five things could I ship in one week that would create a real signal?” Aim for sign‑ups, replies, clicks, or a person who says, “I’d pay for that.” Not a prototype museum—signals. Prefer ideas where you can press “publish” rather than “perfect.”</p>
+<h2 id="micro-exercise"><a class="header" href="#micro-exercise">Micro-Exercise</a></h2>
+<p>Before you close your laptop tonight, write five ideas you could ship in one week. No edits. No research. Just write. Tomorrow, you’ll pick one and move.</p>
+<p>List kicks the loop into motion. Pick keeps it rolling.</p>
+<h2 id="from-list-to-pick"><a class="header" href="#from-list-to-pick">From List To Pick</a></h2>
+<p>When you finish the list, step away for ten minutes. Read it once without editing. Ask: which option would teach me the most this week? Circle it. That question keeps you from choosing what flatters your skill and steers you toward what advances the project.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-5-the-hardest-part--pick"><a class="header" href="#chapter-5-the-hardest-part--pick">Chapter 5: The Hardest Part — Pick</a></h1>
+<p>If List gives you freedom, Pick gives you movement. Commitment feels scary because it shuts doors, but for one loop, that’s the point. You cut options so momentum has room to build.</p>
+<p>Most builders don’t actually pick. We hedge. We juggle. We say, “I’ll explore both in parallel and see which one sticks.” Neither sticks. Splitting attention keeps you from finishing anything you can measure.</p>
+<h2 id="why-pick-matters"><a class="header" href="#why-pick-matters">Why Pick Matters</a></h2>
+<p>Momentum dies in indecision. The longer you hold multiple ideas, the more reasons you invent to delay: maybe the other idea is better; maybe you should validate more; maybe you can tinker with both. TenK 6 doesn’t reward tinkering. It rewards loops. Loops only spin when you pick a wheel. Remember: at this scale, almost every choice is reversible. The cost of waiting is higher than the cost of a small miss.</p>
+<p>The rule is simple: one loop, one idea. Not three. Not two. One.</p>
+<h2 id="from-five-to-one"><a class="header" href="#from-five-to-one">From Five to One</a></h2>
+<p>Remember the first list: sudoku game, YouTube idea generator, simple video editor, growth coach, and a forgettable fifth. If I hadn’t picked, I’d be half‑building a sudoku grid while daydreaming about YouTube tools.</p>
+<p>I picked “growth coach” because it scared me. Games and tools let me hide. A coach meant showing up, asking people questions, and putting my name on the work. The discomfort was a signal. That path became Indie10k. The feeling to watch for isn’t certainty—it’s energy. If an idea pulls you forward and asks you to show up, it’s strong enough for one loop.</p>
+<h2 id="how-to-pick-fast-and-well"><a class="header" href="#how-to-pick-fast-and-well">How to Pick (Fast and Well)</a></h2>
+<p>Decide with your gut, not a spreadsheet. This isn’t due diligence; it’s a one‑loop bet. Choose the option that excites you or spooks you a little—it likely matters. Timebox the decision to twenty‑four hours after you list. If you’re still agonizing on day three, you’re procrastinating. Use constraints to break ties: which idea can you ship a version of in seven days? Pick that one. Write your pick down in a sentence so you know what you just committed to.</p>
+<h2 id="pitfalls-to-avoid"><a class="header" href="#pitfalls-to-avoid">Pitfalls to Avoid</a></h2>
+<p>Analysis paralysis feels productive and kills momentum. The more criteria you invent—TAM, CAC, saturation—the less likely you’ll ship. Fake picking sounds like “I’ll start with A but keep exploring B.” That’s hedging, not choosing. Forever dreaming hides fear under the word “readiness.” If you’ve carried an idea for two years and still haven’t built it, pick it for one loop or let it go. Sunk cost doesn’t apply here; you owe the future loop a clean start.</p>
+<h2 id="microexercise"><a class="header" href="#microexercise">Micro‑Exercise</a></h2>
+<p>Look at your five. Circle one. Commit to a full TenK 6 loop on that idea—even if it fails. Picking doesn’t mean “forever.” It means this loop. After six steps, you get to list again. Put your pick where you’ll see it every day; protect it from drive‑by ideas until the loop ends.</p>
+<p>The cost of picking wrong is one loop. The cost of never picking is months lost to maybes.</p>
+<h2 id="decision-heuristics-that-help"><a class="header" href="#decision-heuristics-that-help">Decision Heuristics That Help</a></h2>
+<p>Use proximity: pick the idea closest to a real user conversation you can have this week. Use friction: if two options tie, choose the one that forces you to talk to someone. Use reach: favor moves that unlock more options next week (e.g., a demo video you can reuse in emails).</p>
+<h2 id="if-you-regret-your-pick"><a class="header" href="#if-you-regret-your-pick">If You Regret Your Pick</a></h2>
+<p>Don’t switch mid‑loop. Finish the smallest possible version of what you chose, collect one signal, and close the loop. Then list again with your new information. Switching early teaches you to quit before evidence arrives.</p>
+<h2 id="public-commitment-optional"><a class="header" href="#public-commitment-optional">Public Commitment (Optional)</a></h2>
+<p>If you struggle to stick with a pick, post a one‑liner: “This week I’m shipping X; I’ll share results Friday.” A tiny public promise keeps the loop moving when your mood dips mid‑week.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-6-the-momentum-engine--ship"><a class="header" href="#chapter-6-the-momentum-engine--ship">Chapter 6: The Momentum Engine — Ship</a></h1>
+<p>Picking is a decision. Shipping is proof. Until you ship, everything else is theory. Ideas stay safe in your head. Boards and docs feel organized. None of that creates momentum. Momentum arrives the moment someone outside your brain can touch your work.</p>
+<h2 id="why-ship-matters"><a class="header" href="#why-ship-matters">Why Ship Matters</a></h2>
+<p>Shipping isn’t about polish. It’s about forcing reality to collide with your idea. Without shipping, you can’t ask real users. Without users, you can’t measure anything. Without data, you can’t share a story that resonates. Ship is the bridge between dreaming and learning.</p>
+<h2 id="day-1-indie10k"><a class="header" href="#day-1-indie10k">Day 1 Indie10k</a></h2>
+<p>After I picked “growth coach,” I didn’t design a brand system, architect microservices, or perfect onboarding. I grabbed a Next.js boilerplate, pushed to Vercel on commit one, wrote a landing page with a headline and fake login, and hit deploy. It wasn’t pretty or scalable. It was alive. Alive beats perfect every time. Day two, the fake login became a simple form that emailed me so I could reply manually—messy, fast, and good enough to learn.</p>
+<h2 id="ship-fast-without-hating-it"><a class="header" href="#ship-fast-without-hating-it">Ship Fast Without Hating It</a></h2>
+<p>Define a one‑sentence deliverable: “A page where people can sign up and see a dashboard with one fake number.” Kill scope aggressively. If it feels like an MVP, cut it in half. Then cut it again. Timebox shipping to seven days max—ideally one to three. The longer you take, the more you’ll over‑engineer. Automate nothing. If you can fake it behind the scenes, do it. Manual is allowed (and encouraged) in your first loop. A fake door (button that says “coming soon”) is better than a month of backend work.</p>
+<h2 id="pitfalls-to-avoid-1"><a class="header" href="#pitfalls-to-avoid-1">Pitfalls to Avoid</a></h2>
+<p>“Just one more feature” turns a deadline into a checklist. Polish addiction keeps you in CSS while users wait. Secret shipping skips the whole loop; if you build for months in stealth, you lose the only feedback that matters.</p>
+<h2 id="microexercise-1"><a class="header" href="#microexercise-1">Micro‑Exercise</a></h2>
+<p>Take your picked idea. Write: “What’s the smallest thing I can put online that proves this exists?” Give yourself forty‑eight hours to launch it—ugly, incomplete, even embarrassing.</p>
+<p>If you don’t ship, you’re not in the loop.</p>
+<h2 id="scope-boxes-for-different-products"><a class="header" href="#scope-boxes-for-different-products">Scope Boxes for Different Products</a></h2>
+<p>SaaS: a landing page, a signup form, and one screen with one fake metric. Mobile: a tappable prototype with one flow and TestFlight or APK link. Content product: a one‑page guide and an email capture. Service: a Calendly link and a two‑paragraph offer. If you can show it or schedule it, you can ship it.</p>
+<h2 id="when-you-get-blocked"><a class="header" href="#when-you-get-blocked">When You Get Blocked</a></h2>
+<p>Shrink the deliverable until no part depends on a complex decision. Replace integrations with screenshots or Looms. Replace database writes with a Google Form. Replace auth with a single‑use link. If a task takes more than a day, you’re solving two problems—cut one.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-7-the-scariest-step--ask"><a class="header" href="#chapter-7-the-scariest-step--ask">Chapter 7: The Scariest Step — Ask</a></h1>
+<p>Shipping feels bold. Asking feels personal. Shipping lets you hide behind code. Asking puts your work—and, by extension, you—in front of real people. You risk silence, criticism, or rejection. That risk is where learning lives.</p>
+<p>If you don’t ask, you don’t learn.</p>
+<h2 id="why-ask-matters"><a class="header" href="#why-ask-matters">Why Ask Matters</a></h2>
+<p>Most indie projects die not because the product is bad, but because the builder never asks anyone to use it. They wait for “organic discovery” and hope users appear on their own. Asking cuts through that fantasy. It tests whether anyone cares enough to click, sign up, or even reply. It shows whether the problem you’re solving sits on their radar.</p>
+<p>Without asking, you’re journaling in code.</p>
+<h2 id="posting-indie10k"><a class="header" href="#posting-indie10k">Posting Indie10k</a></h2>
+<p>Old me would have shipped Indie10k and waited in silence. New me posted on Indie Hackers, wrote on Product Hunt’s forum, and DMed strangers on Reddit. Not spammy. Not sleazy. Just: “I feel your pain. If I were in your shoes, I would do this. 1. 2. 3. 4. 5. Btw, I built this. Here’s what it does. Curious what you think.” People responded. Some signed up. Some said it was gold. Not everyone loved it—and that was fine. The goal wasn’t approval; it was learning. I kept a short log of quotes and links so patterns stood out.</p>
+<h2 id="ask-without-feeling-gross"><a class="header" href="#ask-without-feeling-gross">Ask Without Feeling Gross</a></h2>
+<p>Lead with curiosity. Swap “please use my app” for “does this solve your problem?” Go where your people hang out; don’t shout into X if your audience is in a niche Discord. Make it human—share why you built it, not a pitch deck. Small numbers are fine. Ten honest replies beat a thousand empty likes. Ask one follow‑up: “What would you change first?” Specific feedback travels straight to your next ship.</p>
+<h2 id="pitfalls-to-avoid-2"><a class="header" href="#pitfalls-to-avoid-2">Pitfalls to Avoid</a></h2>
+<p>Waiting for perfect postpones learning. “I’ll ask once I add dark mode” is fear in disguise. Broadcasting without engaging turns posts into noise—reply, converse, and listen. Chasing vanity metrics distracts you; five thoughtful replies teach more than a viral spike.</p>
+<h2 id="microexercise-2"><a class="header" href="#microexercise-2">Micro‑Exercise</a></h2>
+<p>Take what you shipped and share it with three real humans today—friends, a Discord, Indie Hackers, anywhere. Ask one question: “Would you actually use this?” Don’t argue. Listen for the signal under the noise.</p>
+<p>Then move to Measure.</p>
+<h2 id="where-to-ask-and-how"><a class="header" href="#where-to-ask-and-how">Where To Ask (And How)</a></h2>
+<p>Communities: Indie Hackers, r/Entrepreneur, niche subreddits, and Discords tied to your problem space. Direct: past colleagues, newsletter subscribers, people who tweeted about the pain. Local: meetups, coworking spaces, founders’ coffees. Lead with usefulness: “Built a tiny thing that does X—would this save you time?”</p>
+<p>Two simple DM variants:</p>
+<ol>
+<li>“Hey [name], I’m testing a small [tool/guide] for [problem]. Two minutes to tell me if it’s useful? Link: [url]. If not, no worries.”</li>
+<li>“Saw you mention [pain]. I made a scrappy fix—mind a quick look? I’ll owe you one.”</li>
+</ol>
+<p>Interviews vs. surveys: interviews reveal stories and hidden steps; surveys scale once you know which questions matter. Start with three short conversations before you blast a form.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-8-the-honest-mirror--measure"><a class="header" href="#chapter-8-the-honest-mirror--measure">Chapter 8: The Honest Mirror — Measure</a></h1>
+<p>You shipped. You asked. Now you face what happened. Measure doesn’t care how many nights you coded or how clever the architecture is. It only cares about reality when people touched your work.</p>
+<h2 id="why-measure-matters"><a class="header" href="#why-measure-matters">Why Measure Matters</a></h2>
+<p>Without measuring, you’re guessing. Guessing killed my first sixty‑five projects. Measuring gives you truth: did anyone click, sign up, return, or bounce? Truth stings sometimes. It also points your feet in the right direction.</p>
+<h3 id="indie10k-loops"><a class="header" href="#indie10k-loops">Indie10k Loops</a></h3>
+<p>Loop one: almost nobody stuck. It was heavy and complex. Loop two: better, but still bulky—drop‑off after sign‑up. Loop three: lean enough at last; people completed their first loops. Without measuring, I would have kept polishing that bloated V1. Data forced cuts I wouldn’t have made on instinct.</p>
+<h2 id="measure-without-overcomplicating"><a class="header" href="#measure-without-overcomplicating">Measure Without Overcomplicating</a></h2>
+<p>Pick one metric per loop. “Number of people who clicked download” is enough. Timebox observation to a week so you don’t chase daily noise. Ignore vanity: pageviews feel nice; completed actions matter. Keep your metric visible—write it where you see it so you don’t drift. Match metric type to step: leading indicators for early loops (clicks), lagging for monetization (payments).</p>
+<h2 id="pitfalls-to-avoid-3"><a class="header" href="#pitfalls-to-avoid-3">Pitfalls to Avoid</a></h2>
+<p>Metric soup lets you rationalize anything. Choose one. Cherry‑picking hides the learning in the ugly bits. Over‑measuring turns a loop into a board meeting. Keep it simple and honest. When numbers are small, look for direction and stories, not statistical certainty.</p>
+<h2 id="microexercise-3"><a class="header" href="#microexercise-3">Micro‑Exercise</a></h2>
+<p>Look at what you shipped and ask: “What’s the single most important thing I want to see happen this week?” Write it down. At week’s end, check it. No excuses. No filters. Just the truth.</p>
+<p>Measure acts as a compass. Next, you’ll share what you found.</p>
+<h2 id="set-a-baseline-first"><a class="header" href="#set-a-baseline-first">Set a Baseline First</a></h2>
+<p>Write the starting number before you ship so you don’t retro‑fit memory. Even “zero sign‑ups” is useful—it makes the first one count.</p>
+<h2 id="reading-small-numbers"><a class="header" href="#reading-small-numbers">Reading Small Numbers</a></h2>
+<p>In early loops, you won’t have statistical power. Use direction, not precision. Did replies go from zero to three? Did time‑to‑value drop from minutes to seconds? Pair the number with a quote to keep context.</p>
+<h2 id="pivot-persist-or-pare-back"><a class="header" href="#pivot-persist-or-pare-back">Pivot, Persist, or Pare Back</a></h2>
+<p>If the metric moves in the right direction, persist with another loop. If it stays flat and feedback points to a different problem, pivot the aim (switch tracks). If effort balloons, pare back scope until you can see movement again. The measure tells you which lever to pull.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-9-the-multiplier--share"><a class="header" href="#chapter-9-the-multiplier--share">Chapter 9: The Multiplier — Share</a></h1>
+<p>Most builders stop at Measure. They read the data, tweak a feature, and move on quietly. Sharing turns a private loop into compounding momentum. When you share the loop—warts, wins, and what’s next—you attract the right people, build trust, and create surface area for luck. Someone sees a post, DMs you, introduces you, or pays you.</p>
+<p>Shipping proves you can build. Asking proves you’re brave. Measuring proves you’re honest. Sharing proves you’re alive.</p>
+<h2 id="why-share-matters"><a class="header" href="#why-share-matters">Why Share Matters</a></h2>
+<p>If you keep your loops private, nobody knows you exist. When you share, you invite others into the journey. People root for progress. Your story becomes your marketing. Over time, that story becomes a moat—hard to copy, built through consistency.</p>
+<h2 id="talking-about-indie10k"><a class="header" href="#talking-about-indie10k">Talking About Indie10k</a></h2>
+<p>For years, I thought “real work” lived only in the IDE. With Indie10k, I forced myself to share: build logs on Indie Hackers, cross‑posts on Dev.to and Hashnode, and small updates on X. People didn’t just see a tool; they saw a story. Some became the first users. It wasn’t ads or funnels. It was straightforward storytelling. The cadence mattered more than the channel—showing up weekly built trust.</p>
+<h2 id="share-without-cringing"><a class="header" href="#share-without-cringing">Share Without Cringing</a></h2>
+<p>Be honest. Don’t posture. Share the ugly and the wins. Keep it small—a screenshot, a graph, two sentences. Pick the stage where your audience hangs out: Reddit, Discord, Indie Hackers, X. Teach, don’t pitch. Share what you learned, not just what you built. A simple template helps: why you chose this step, what you shipped, one metric, one learning, what’s next.</p>
+<h2 id="pitfalls-to-avoid-4"><a class="header" href="#pitfalls-to-avoid-4">Pitfalls to Avoid</a></h2>
+<p>Silence cuts off compounding effects. Only sharing wins rings hollow; people relate to stumbles. Vanity updates (“100 likes!”) matter less than real outcomes (“one user paid $10”).</p>
+<h2 id="microexercise-4"><a class="header" href="#microexercise-4">Micro‑Exercise</a></h2>
+<p>Write one short post today—anywhere. “I ran a loop. Here’s what happened. Here’s what I learned.” That’s it. No newsletter. No strategy. Just hit publish once.</p>
+<p>Sharing isn’t about going viral. It keeps the loop alive so the next one starts with more people in your corner.</p>
+<p>With Share, you complete the first TenK 6 cycle: List → Pick → Ship → Ask → Measure → Share. You don’t stop here. You start over. That’s how momentum compounds.</p>
+<h2 id="where-to-share-without-spamming"><a class="header" href="#where-to-share-without-spamming">Where To Share (Without Spamming)</a></h2>
+<p>Pick one or two places where your audience gathers and show up weekly. Indie Hackers build logs, a focused subreddit, a Discord channel, or a small newsletter. Cross‑post only when the content fits the room. If a place frowns on links, write a short summary and add the link in a comment.</p>
+<h2 id="anticringe-tips"><a class="header" href="#anticringe-tips">Anti‑Cringe Tips</a></h2>
+<p>Write like you talk. Cut the pitch. Lead with one concrete thing you shipped and one number. Give credit when someone’s feedback shaped your next step. Thank people who replied last time. Consistency beats cleverness.</p>
+<h2 id="repurpose-smartly"><a class="header" href="#repurpose-smartly">Repurpose Smartly</a></h2>
+<p>Turn a loop update into a tweet, a forum post, and a two‑minute Loom. Same facts, different formats. The point isn’t to be everywhere—it’s to make it easy for the right people to bump into your work.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-10-reflect--turn-loops-into-habits"><a class="header" href="#chapter-10-reflect--turn-loops-into-habits">Chapter 10: Reflect — Turn Loops Into Habits</a></h1>
+<p>Finishing a loop isn’t the end. It’s a checkpoint. The power of TenK 6 grows when you pause, reflect, and capture what happened before you spin the next cycle. Without reflection, loops blur together and learning leaks away. Reflection builds a body of evidence—your personal growth archive.</p>
+<h2 id="why-reflection-matters"><a class="header" href="#why-reflection-matters">Why Reflection Matters</a></h2>
+<p>Founders skip reflection because starting the next thing feels exciting. Reflection multiplies progress. It gives you clarity on what worked and what was noise. Wins fuel confidence. Misses turn into lessons instead of dead ends. Writing it down forces honesty and creates material you can share later.</p>
+<p>Half an hour a week can save you months of mistakes.</p>
+<h2 id="a-simple-rhythm"><a class="header" href="#a-simple-rhythm">A Simple Rhythm</a></h2>
+<p>At the end of each week—or when you complete a loop—answer five prompts on one page. Keep it conversational; you’re writing for future‑you.</p>
+<p>What did you ship? Paste evidence: a screenshot, link, or commit. Who did you ask and what did you learn? Include quotes, screenshots, or even “nobody replied” if that happened. What metric did you track and where did it land—start and end? What surprised you—unexpected feedback, edge cases, small wins? What will you try next? Carry one clear insight into the next loop.</p>
+<p>That’s it. Five questions. One page. Then move.</p>
+<h2 id="capture-it-well"><a class="header" href="#capture-it-well">Capture It Well</a></h2>
+<p>Keep it light: a notes doc, markdown file, or Indie10k project log works fine. Make it visual—graphs and screenshots beat walls of text. Build a ritual: same time every week—Friday afternoon, Sunday night, or Monday morning. Tag patterns you notice so they’re easy to search later.</p>
+<h2 id="example-early-indie10k"><a class="header" href="#example-early-indie10k">Example: Early Indie10k</a></h2>
+<p>After loop three:</p>
+<p>Shipped a landing page with fake login. Asked on Indie Hackers and got three comments. Tracked sign‑ups: thirty‑seven; return visits: zero. Surprise: the “$10k” framing resonated more than the tool. Next: cut features and lean into the story.</p>
+<p>That one page guided everything that followed.
+Over a month of pages, patterns get loud. You’ll see which channels keep working, which ships stall, and which asks land best. That clarity is worth the half hour.</p>
+<h2 id="microexercise-5"><a class="header" href="#microexercise-5">Micro‑Exercise</a></h2>
+<p>Pick a day this week and block thirty minutes. Answer the five prompts. Save the page. Share one insight publicly. You just turned a loop into a habit.</p>
+<p>In the next chapter, you’ll see how to aim your loops at the right bottleneck with tracks.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-11-growth-tracks--aim-your-loops"><a class="header" href="#chapter-11-growth-tracks--aim-your-loops">Chapter 11: Growth Tracks — Aim Your Loops</a></h1>
+<p>TenK 6 stays the same: six steps, one loop. But not every loop serves the same purpose. Sometimes you need to prove a problem exists. Sometimes you need more attention. Sometimes you need dollars. Sometimes you need to keep the customers you have.</p>
+<p>Tracks give each loop a theme. They align your actions to your biggest bottleneck so you don’t ship random features, measure random metrics, or ask random people. Think of them like workout plans: same movements, different focus.</p>
+<h2 id="the-four-tracks"><a class="header" href="#the-four-tracks">The Four Tracks</a></h2>
+<h3 id="validate-track"><a class="header" href="#validate-track">Validate Track</a></h3>
+<p>Prove people actually want what you’re building. List five problems or hypotheses to test, pick one customer problem, and ship a fast test—a survey, landing page, prototype, or fake door. Ask a few people directly. Measure a real signal like sign‑ups, replies, or pre‑orders. Share what happened. Example: “Thirty replies to a two‑question survey” is stronger than ten likes on a launch tweet.</p>
+<p>Validation keeps you from burning months on a product nobody needs.</p>
+<h3 id="distribute-track"><a class="header" href="#distribute-track">Distribute Track</a></h3>
+<p>Grow awareness and reach more of the right people. List five channels or content ideas, pick one to focus on this week, and ship something public: a post, a short demo, a forum write‑up, a partner outreach. Ask by sharing it in the right rooms. Measure clicks, subscribers, or qualified comments. Share the behind‑the‑scenes. Example: one helpful tutorial that drives ten sign‑ups beats a thread that trends and converts zero.</p>
+<p>Distribution builds audience in parallel with product.</p>
+<h3 id="monetize-track"><a class="header" href="#monetize-track">Monetize Track</a></h3>
+<p>Turn users into paying customers. List five pricing experiments, pick one simple offer, and ship a basic way to buy—a pricing page, a Stripe link, a Gumroad button, or a manual invoice. Ask by pitching directly to prospects. Measure paid conversions or revenue. Share the story of what you tried. Example: two $19 sales from ten DMs tell you more than a hundred “sounds cool” replies.</p>
+<p>Monetization replaces vanity growth with revenue evidence.</p>
+<h3 id="retain-track"><a class="header" href="#retain-track">Retain Track</a></h3>
+<p>Keep customers engaged and reduce churn. List five retention ideas—onboarding fixes, bug patches, reminders, small delights. Pick one high‑leverage bet and ship a small improvement. Ask by talking to active, new, or churned users. Measure activation, repeat usage, NPS, or churn. Share how you solved real pain. Example: “Activation rose from 22% to 41% after a two‑step tutorial” is retention evidence.</p>
+<p>Retention turns spikes into a stable base.</p>
+<h2 id="choose-your-track"><a class="header" href="#choose-your-track">Choose Your Track</a></h2>
+<p>Ask, “Where am I stuck?” No users: run Validate. Users but no attention: run Distribute. Attention but no revenue: run Monetize. Revenue but churn bites: run Retain. Pick one track and run loops until the bottleneck moves. Then switch. Track changes with one sentence per week so you see when it’s time to re‑aim.</p>
+<h2 id="microexercise-6"><a class="header" href="#microexercise-6">Micro‑Exercise</a></h2>
+<p>Identify your current bottleneck, choose a track, and run one loop this week aimed squarely at that constraint.</p>
+<p>Next, you’ll see how the loop scales from solo to a small team without drowning in process.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-12-scaling--from-solo-to-small-teams"><a class="header" href="#chapter-12-scaling--from-solo-to-small-teams">Chapter 12: Scaling — From Solo to Small Teams</a></h1>
+<p>TenK 6 started as a solo system: one person, six steps, one loop at a time. When a friend joins, a contractor signs on, or you’re suddenly a crew of three to five, many projects collapse under the weight of “team process.” Slack chaos, scattered boards, endless syncs—momentum dies in overhead. The good news: TenK 6 scales without turning into bureaucracy.</p>
+<h2 id="why-teams-stall"><a class="header" href="#why-teams-stall">Why Teams Stall</a></h2>
+<p>Add people and three new problems appear. Visibility drops—nobody knows who’s doing what. Coordination slips—tasks overlap or fall through cracks. Accountability blurs—everyone assumes someone else will move the loop. Big companies solve this with meetings and roadmaps. Indie teams need something lighter.</p>
+<h2 id="scale-the-loop-not-the-overhead"><a class="header" href="#scale-the-loop-not-the-overhead">Scale the Loop, Not the Overhead</a></h2>
+<p>Keep the principle: one loop at a time. Make the loop a shared track. List together: brainstorm as a group and capture everyone’s ideas. Pick one with a clear owner. Different people can ship pieces, but the owner stays accountable for the loop. Split the asking—each member gathers feedback from their own network. Track metrics in one visible place. Rotate who shares the story each week. Use async updates to reduce meetings: a daily two‑line check‑in (“what I shipped, what’s blocked”) keeps momentum visible.</p>
+<h2 id="crew-mode-in-practice"><a class="header" href="#crew-mode-in-practice">Crew Mode in Practice</a></h2>
+<p>Use one loop board instead of a hundred task tickets. Track the loop itself with one column per step: List, Pick, Ship, Ask, Measure, Share. Assign a loop owner; they don’t do all the work, but they are accountable end‑to‑end. Keep an evidence folder for screenshots, notes, and metrics—this becomes your collective memory. Close the week with a fifteen‑minute retro: what did we ship, ask, measure, and share? Capture learning before the next loop.
+If you hit conflict on priorities, defer to the loop’s pick. New ideas can live in the next list—don’t split the current loop across two goals.</p>
+<h2 id="example-indie10k-crew"><a class="header" href="#example-indie10k-crew">Example: Indie10k Crew</a></h2>
+<p>When we tested team mode, we didn’t add features—we added constraints. One loop at a time for three people. A shared six‑step board. A rotating storyteller. Instead of three people sprinting in different directions, we had three people compounding one direction.</p>
+<h2 id="microexercise-7"><a class="header" href="#microexercise-7">Micro‑Exercise</a></h2>
+<p>If you’re two or more, create a shared six‑step board. Assign an owner for the current loop. Commit as a team: no new loop until the current one finishes. That’s scaling TenK 6—momentum without meetings.</p>
+<p>Next comes sustainability—how to keep looping without burning out.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-13-sustain--momentum-without-burnout"><a class="header" href="#chapter-13-sustain--momentum-without-burnout">Chapter 13: Sustain — Momentum Without Burnout</a></h1>
+<p>Reaching $10k MRR feels huge. The grind doesn’t end there. Many founders burn out right after their first win. They sprint loop after loop, then realize they can’t keep that pace forever. Sustainability isn’t a seventh step; it’s the rhythm that keeps the six steps going.</p>
+<h2 id="why-founders-burn-out"><a class="header" href="#why-founders-burn-out">Why Founders Burn Out</a></h2>
+<p>Pace mismatch turns every week into a hackathon. Perfection pressure demands that each loop top the last. Life gets neglected and the project crowds out health, family, and play. Vanity metrics become fuel, and when they dip, motivation collapses. Burnout kills projects, momentum, and joy.</p>
+<h2 id="the-paceagnostic-principle"><a class="header" href="#the-paceagnostic-principle">The Pace‑Agnostic Principle</a></h2>
+<p>TenK 6 is deliberately pace‑agnostic. You don’t need to finish a loop every week. Some weeks you’ll finish three. Some weeks you’ll crawl through one step. Both count. What matters is not breaking the chain. Keep evidence flowing, no matter how small.</p>
+<h2 id="danger-signs"><a class="header" href="#danger-signs">Danger Signs</a></h2>
+<p>You dread opening the project. Every loop feels like a chore. You hide results instead of sharing them. You work more hours and make less progress. When you see these, reset your pace before the work resets you.</p>
+<h2 id="how-to-sustain"><a class="header" href="#how-to-sustain">How to Sustain</a></h2>
+<p>Let micro‑loops count. A one‑hour ship is progress. Do an energy check before you start: can you realistically finish this with your current energy? Rotate tracks—switching from Monetize to Distribute can reset motivation. Celebrate small wins: share not just revenue jumps but tiny validated learnings. Take deliberate breaks. A week off beats a permanent stall. Plan seasons: a few fast loops, then a quieter stretch to consolidate.</p>
+<h2 id="example-an-indie10k-plateau"><a class="header" href="#example-an-indie10k-plateau">Example: An Indie10k Plateau</a></h2>
+<p>After loop three or four, I hit a slump. Traffic grew; revenue didn’t. I am frustrated. I shortened loops into micro‑experiments, shared raw updates instead of waiting for big ones, and let myself run a “fun loop” alongside growth work. And more importantly, I shift my mindset from “how to grow user” to “today, I will make a tiny growth experiment”. Momentum returned—not because I pushed harder, but because I made space to breathe.</p>
+<h2 id="microexercise-8"><a class="header" href="#microexercise-8">Micro‑Exercise</a></h2>
+<p>This week, run a loop with half your usual effort. Make it tiny, easy, even playful. Then reflect: did the world end? That’s sustainability in action.</p>
+<p>Next, we’ll close out the tracks with a focus on validation, distribution, monetization, and retention in practice.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-14-validate-track--prove-people-care"><a class="header" href="#chapter-14-validate-track--prove-people-care">Chapter 14: Validate Track — Prove People Care</a></h1>
+<p>Most indie projects die not because they’re badly built, but because they solve problems nobody cares about.</p>
+<p>That’s why <strong>validation is the first track</strong>. Before distribution, before monetization, before retention—you need proof that real humans feel the pain you’re solving and want your solution.</p>
+<p>The Validate Track is about de‑risking your effort. Instead of investing six months, you invest one loop and leave with evidence you can point to.</p>
+<hr />
+<h2 id="why-validation-matters"><a class="header" href="#why-validation-matters">Why Validation Matters</a></h2>
+<p>Indie founders often skip validation because it feels slow or awkward. They think:</p>
+<ul>
+<li>
+<p><em>“I’ll just build it and see.”</em></p>
+</li>
+<li>
+<p><em>“If the product is good, users will come.”</em></p>
+</li>
+<li>
+<p><em>“Talking to people isn’t coding. It’s not real work.”</em></p>
+</li>
+</ul>
+<p>I used to think that too. Which is why I buried 65 projects.</p>
+<p>Validation flips that. It forces you to ask: “Do people care enough to respond?” before you pour energy into features. You trade comfort for clarity and learn sooner whether the problem is sharp and present.</p>
+<h2 id="choosing-problems-worth-testing"><a class="header" href="#choosing-problems-worth-testing">Choosing Problems Worth Testing</a></h2>
+<p>Write problems, not features. Good candidates sound like pains people already try to solve today. You should be able to name who feels it, when they feel it, and what they do as a workaround. If you can’t, the problem is probably too vague for a first loop.</p>
+<hr />
+<h2 id="how-to-run-a-validate-loop"><a class="header" href="#how-to-run-a-validate-loop">How to Run a Validate Loop</a></h2>
+<p>The six steps of TenK 6 stay the same—but here’s how they look inside validation.</p>
+<h3 id="1-list-5--capture-hypotheses"><a class="header" href="#1-list-5--capture-hypotheses">1. List 5 — Capture Hypotheses</a></h3>
+<p>Write down five possible problems or customer pains.<br />
+Not features. Not solutions. <em>Problems.</em></p>
+<p>Example:</p>
+<ol>
+<li>
+<p>Indie devs abandon projects due to lack of accountability.</p>
+</li>
+<li>
+<p>Small YouTubers struggle to generate fresh content ideas.</p>
+</li>
+<li>
+<p>Freelancers lose track of unpaid invoices.</p>
+</li>
+<li>
+<p>Remote teams get stuck without async visibility.</p>
+</li>
+<li>
+<p>Parents can’t find kid-friendly, ad-free apps.</p>
+</li>
+</ol>
+<h3 id="2-pick-1--choose-one-problem"><a class="header" href="#2-pick-1--choose-one-problem">2. Pick 1 — Choose One Problem</a></h3>
+<p>Select the problem that feels most promising or urgent.<br />
+Criteria:</p>
+<ul>
+<li>
+<p>You know people with this problem.</p>
+</li>
+<li>
+<p>You can test it quickly.</p>
+</li>
+<li>
+<p>It energizes (or scares) you.</p>
+</li>
+</ul>
+<h3 id="3-ship-1--create-a-fast-test"><a class="header" href="#3-ship-1--create-a-fast-test">3. Ship 1 — Create a Fast Test</a></h3>
+<p>Don’t build a full product. Ship the <strong>minimum artifact</strong> that lets you test interest. Examples:</p>
+<ul>
+<li>
+<p>A Google Form survey.</p>
+</li>
+<li>
+<p>A landing page with an email sign-up.</p>
+</li>
+<li>
+<p>A clickable Figma mockup.</p>
+</li>
+<li>
+<p>A “fake door” (button that says “Coming Soon”).</p>
+</li>
+</ul>
+<p>The goal isn’t polish—it’s evidence. Ship something a real person can react to in under a minute. If they need ten minutes to understand it, the test is too heavy.</p>
+<p>Examples by format:</p>
+<ul>
+<li>Landing page: one promise, one screenshot, one button.</li>
+<li>Survey: three questions max; one free‑text question to learn words users use.</li>
+<li>Mockup: a click‑through of the core flow; no dead‑end walls of text.</li>
+</ul>
+<h3 id="4-ask-3--talk-to-people"><a class="header" href="#4-ask-3--talk-to-people">4. Ask 3 — Talk to People</a></h3>
+<p>Reach out to three potential users:</p>
+<ul>
+<li>
+<p>Friends in the space.</p>
+</li>
+<li>
+<p>Strangers on forums or Discord.</p>
+</li>
+<li>
+<p>People tweeting about the problem.</p>
+</li>
+</ul>
+<p>Ask simple questions:</p>
+<ul>
+<li>
+<p>“Do you run into this?”</p>
+</li>
+<li>
+<p>“How are you solving it today?”</p>
+</li>
+<li>
+<p>“Would this solution help?”</p>
+</li>
+</ul>
+<h3 id="5-measure-1--track-a-real-signal"><a class="header" href="#5-measure-1--track-a-real-signal">5. Measure 1 — Track a Real Signal</a></h3>
+<p>Pick one metric that shows real interest:</p>
+<ul>
+<li>
+<p>Number of people who gave you their email.</p>
+</li>
+<li>
+<p>Number of “yes, I’d pay” responses.</p>
+</li>
+<li>
+<p>Number of survey replies.</p>
+</li>
+</ul>
+<p>If it’s zero, that’s evidence too. Zero responses after honest outreach usually means the problem isn’t sharp, the audience is wrong, or the artifact is unclear. Change one variable and run another tiny test.</p>
+<h3 id="signals-vs-noise"><a class="header" href="#signals-vs-noise">Signals vs. Noise</a></h3>
+<p>Signals look like action: replies, sign‑ups, calendar bookings, pre‑orders. Noise looks like compliments, likes, and vague “sounds cool.” Treat compliments as encouragement, not validation.</p>
+<h3 id="6-share-1--publish-your-learnings"><a class="header" href="#6-share-1--publish-your-learnings">6. Share 1 — Publish Your Learnings</a></h3>
+<p>Don’t hide validation results. Share them:</p>
+<ul>
+<li>
+<p>Blog post: “I tested 5 ideas, here’s what happened.”</p>
+</li>
+<li>
+<p>Tweet thread: “Ran my first validation loop. 17 people said yes to problem X.”</p>
+</li>
+<li>
+<p>Indie Hackers post: “Survey results show freelancers really struggle with Y.”</p>
+</li>
+</ul>
+<p>Sharing builds credibility and attracts people who care about the problem.</p>
+<hr />
+<h2 id="a-real-example-indie10k-validation"><a class="header" href="#a-real-example-indie10k-validation">A Real Example: Indie10k Validation</a></h2>
+<p>When I first tested the “growth coach” idea (which became Indie10k), I didn’t build a product.</p>
+<ul>
+<li>
+<p><strong>Ship</strong> → I made a landing page with a fake login.</p>
+</li>
+<li>
+<p><strong>Ask</strong> → Posted on Indie Hackers, Product Hunt forum, and DM’d a few Reddit users.</p>
+</li>
+<li>
+<p><strong>Measure</strong> → 17 people signed up, 3 messaged me directly saying “this is gold.”</p>
+</li>
+<li>
+<p><strong>Share</strong> → Wrote a build log about why the $10k framing resonated.</p>
+</li>
+</ul>
+<p>That was enough validation to justify the next loop. Importantly, the wording people used in replies (“$10k felt concrete”) became copy on the landing page. Let the market write your headline.</p>
+<hr />
+<h2 id="pitfalls-to-avoid-5"><a class="header" href="#pitfalls-to-avoid-5">Pitfalls to Avoid</a></h2>
+<ul>
+<li>
+<p><strong>Overbuilding.</strong> A landing page beats a full app.</p>
+</li>
+<li>
+<p><strong>Fishing for compliments.</strong> You don’t want “this is cool.” You want action: sign-ups, pre-orders, feedback.</p>
+</li>
+<li>
+<p><strong>Ignoring silence.</strong> No replies = clear evidence. Don’t sugarcoat.</p>
+</li>
+<li>
+<p><strong>Stalling.</strong> Validation doesn’t take months. It takes one loop.</p>
+</li>
+<li>
+<p><strong>Testing too much at once.</strong> Change one thing per loop so you know what moved the number.</p>
+</li>
+</ul>
+<hr />
+<h2 id="micro-exercise-1"><a class="header" href="#micro-exercise-1">Micro-Exercise</a></h2>
+<p>Right now:</p>
+<ol>
+<li>
+<p>Write five problems you think are worth solving.</p>
+</li>
+<li>
+<p>Circle one.</p>
+</li>
+<li>
+<p>In the next 48 hours, ship a test artifact.</p>
+</li>
+<li>
+<p>Message three people who match the problem and ask for a two‑minute reaction.</p>
+</li>
+</ol>
+<p>By the end of the week, you’ll have real evidence—not just intuition.</p>
+<hr />
+<h2 id="key-principle-proof-before-progress"><a class="header" href="#key-principle-proof-before-progress">Key Principle: Proof Before Progress</a></h2>
+<p>Every Validate loop should leave behind <strong>proof</strong>: a survey response, a screenshot of sign-ups, a “yes” email, a Stripe pre-order.</p>
+<p>If you can’t collect evidence, you haven’t validated.</p>
+<hr />
+<p>👉 In <strong>Chapter 15: Distribute Track</strong>, we’ll move from validation to visibility—growing your audience so more people know about what you’re building.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-15-distribute-track--grow-your-audience"><a class="header" href="#chapter-15-distribute-track--grow-your-audience">Chapter 15: Distribute Track — Grow Your Audience</a></h1>
+<p>You’ve validated that people care.<br />
+Now comes the next bottleneck: <strong>getting in front of more people.</strong></p>
+<p>You can have the best idea in the world, but if nobody sees it, it’s dead on arrival. Distribution is how you put oxygen on the spark.</p>
+<p>This isn’t about going viral. It’s about consistently reaching more of the right people, one loop at a time. Distribution compounds when you show up with useful things, in the right places, on a reliable cadence.</p>
+<hr />
+<h2 id="why-distribution-matters"><a class="header" href="#why-distribution-matters">Why Distribution Matters</a></h2>
+<p>Indie founders often treat distribution as an afterthought. They think:</p>
+<ul>
+<li>
+<p><em>“If I build a great product, word will spread.”</em></p>
+</li>
+<li>
+<p><em>“Marketing is cringe, I’ll focus on product.”</em></p>
+</li>
+<li>
+<p><em>“I’ll start posting once I hit $1k MRR.”</em></p>
+</li>
+</ul>
+<p>That’s backwards. Distribution isn’t optional—it’s the second engine of momentum.</p>
+<p>Validation proves there’s demand. Distribution proves you can reach it. Without distribution, insight stays private and progress stalls in the dark.</p>
+<hr />
+<h2 id="how-to-run-a-distribute-loop"><a class="header" href="#how-to-run-a-distribute-loop">How to Run a Distribute Loop</a></h2>
+<p>The six steps of TenK 6 applied to distribution:</p>
+<h3 id="1-list-5--channels--tactics"><a class="header" href="#1-list-5--channels--tactics">1. List 5 — Channels &amp; Tactics</a></h3>
+<p>Brainstorm five possible ways to reach people this week. Examples:</p>
+<ul>
+<li>
+<p>Write a blog post.</p>
+</li>
+<li>
+<p>Record a short demo video.</p>
+</li>
+<li>
+<p>Post on Indie Hackers or Reddit.</p>
+</li>
+<li>
+<p>Run a small paid ad test.</p>
+</li>
+<li>
+<p>Reach out to a micro-influencer.</p>
+</li>
+<li>
+<p>Guest post or newsletter swap.</p>
+</li>
+<li>
+<p>Share a two-minute Loom walkthrough.</p>
+</li>
+</ul>
+<h3 id="2-pick-1--focus-on-one-channel"><a class="header" href="#2-pick-1--focus-on-one-channel">2. Pick 1 — Focus on One Channel</a></h3>
+<p>Don’t scatter across all five. Choose one.<br />
+Criteria:</p>
+<ul>
+<li>
+<p>Where your audience already hangs out.</p>
+</li>
+<li>
+<p>Something you can execute this week.</p>
+</li>
+<li>
+<p>A channel you’re willing to test multiple times.</p>
+</li>
+</ul>
+<h3 id="3-ship-1--publish-something"><a class="header" href="#3-ship-1--publish-something">3. Ship 1 — Publish Something</a></h3>
+<p>This is the action step. Put something in the world:</p>
+<ul>
+<li>
+<p>Blog post or tutorial.</p>
+</li>
+<li>
+<p>Tweet thread or LinkedIn post.</p>
+</li>
+<li>
+<p>YouTube short or TikTok demo.</p>
+</li>
+<li>
+<p>Partnership email to another founder.</p>
+</li>
+</ul>
+<p>Remember: imperfect but published beats perfect but hidden. Ship something that teaches, not teases.</p>
+<h3 id="4-ask-3--share-directly"><a class="header" href="#4-ask-3--share-directly">4. Ask 3 — Share Directly</a></h3>
+<p>Don’t just hit “publish” and pray. Actively share with at least three people or communities:</p>
+<ul>
+<li>
+<p>DM a friend and ask for feedback.</p>
+</li>
+<li>
+<p>Drop the post in a niche Slack/Discord.</p>
+</li>
+<li>
+<p>Reply to someone else’s thread with your resource.</p>
+</li>
+</ul>
+<p>Distribution isn’t just broadcasting—it’s conversation. Ask for one small action: “Would you share this with one person who needs it?”</p>
+<h3 id="5-measure-1--track-reach"><a class="header" href="#5-measure-1--track-reach">5. Measure 1 — Track Reach</a></h3>
+<p>Pick one metric that shows distribution is working:</p>
+<ul>
+<li>
+<p>Clicks to your landing page.</p>
+</li>
+<li>
+<p>Email sign-ups.</p>
+</li>
+<li>
+<p>Social shares.</p>
+</li>
+<li>
+<p>Comments from real people.</p>
+</li>
+</ul>
+<p>Don’t obsess over likes. Look for qualified attention. A comment from a fit user beats a hundred impressions from randoms.</p>
+<h3 id="content-that-compounds"><a class="header" href="#content-that-compounds">Content That Compounds</a></h3>
+<p>Favor assets you can reuse: a tutorial that answers a common question, a checklist that speeds a task, a small tool people bookmark. These keep working while you sleep.</p>
+<h3 id="6-share-1--tell-the-story"><a class="header" href="#6-share-1--tell-the-story">6. Share 1 — Tell the Story</a></h3>
+<p>Meta is powerful. Share what you tried and what happened:</p>
+<ul>
+<li>
+<p>“I posted my first demo video, got 327 views and 4 sign-ups.”</p>
+</li>
+<li>
+<p>“Tried a blog post on X community, 12 comments of feedback.”</p>
+</li>
+</ul>
+<p>Even small results inspire others and compound your credibility.</p>
+<hr />
+<h2 id="a-real-example-early-indie10k-distribution"><a class="header" href="#a-real-example-early-indie10k-distribution">A Real Example: Early Indie10k Distribution</a></h2>
+<p>When I had a tiny landing page and a handful of sign-ups, I didn’t buy ads.</p>
+<ul>
+<li>
+<p><strong>Ship</strong> → Wrote a short story on Indie Hackers about my 65 failed projects.</p>
+</li>
+<li>
+<p><strong>Ask</strong> → Shared the link in one founder Discord and to a friend over DM.</p>
+</li>
+<li>
+<p><strong>Measure</strong> → 400 views, 20 sign-ups, 5 comments of encouragement.</p>
+</li>
+<li>
+<p><strong>Share</strong> → Posted a build log: “Turns out, my story resonated more than the tool.”</p>
+</li>
+</ul>
+<p>That loop did more for traction than months of silent coding ever did. It also gave me a piece I could send in DMs for weeks—one asset, multiple uses.</p>
+<hr />
+<h2 id="pitfalls-to-avoid-6"><a class="header" href="#pitfalls-to-avoid-6">Pitfalls to Avoid</a></h2>
+<ul>
+<li>
+<p><strong>Trying everything at once.</strong> Scattering weakens signal. Focus on one channel per loop.</p>
+</li>
+<li>
+<p><strong>Chasing vanity.</strong> A thousand impressions mean nothing if nobody clicks through.</p>
+</li>
+<li>
+<p><strong>Inconsistency.</strong> One post won’t grow you. Ten loops will.</p>
+</li>
+<li>
+<p><strong>Copying blindly.</strong> What worked for a SaaS giant won’t necessarily work for you.</p>
+</li>
+<li>
+<p><strong>Posting without a follow‑up.</strong> Plan what you’ll do when someone replies or asks a question.</p>
+</li>
+</ul>
+<hr />
+<h2 id="micro-exercise-2"><a class="header" href="#micro-exercise-2">Micro-Exercise</a></h2>
+<p>Right now, list five ways you could put your work in front of people this week.<br />
+Circle one.<br />
+Ship it in the next 48 hours.</p>
+<p>At the end of the week, measure one thing: did it reach anyone new—and did any of them take a next step?</p>
+<hr />
+<h2 id="key-principle-consistent-visibility"><a class="header" href="#key-principle-consistent-visibility">Key Principle: Consistent Visibility</a></h2>
+<p>Distribution isn’t about a single viral hit.<br />
+It’s about showing up, week after week, until people know you exist and trust what you’re building.</p>
+<p>Every Distribute loop adds surface area for serendipity. The more you show up, the more luck finds you. Show your work. Teach one thing. Invite one action.</p>
+<hr />
+<p>👉 In <strong>Chapter 16: Monetize Track</strong>, we’ll move from reach to revenue—converting attention into paying customers through simple pricing experiments.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-16-monetize-track--turn-attention-into-revenue"><a class="header" href="#chapter-16-monetize-track--turn-attention-into-revenue">Chapter 16: Monetize Track — Turn Attention Into Revenue</a></h1>
+<p>Validation proves people care.<br />
+Distribution gets more people to notice.<br />
+But here’s the truth: <strong>attention alone isn’t a business.</strong></p>
+<p>At some point, you have to ask for money. Do it earlier than feels comfortable so you learn whether you have a business or a fan club.</p>
+<p>That’s what the <strong>Monetize Track</strong> is for—turning curiosity into cash. Not with a perfect business model, but with small, evidence-based pricing experiments.</p>
+<hr />
+<h2 id="why-monetization-matters-early"><a class="header" href="#why-monetization-matters-early">Why Monetization Matters Early</a></h2>
+<p>Indie founders delay monetization out of fear. They tell themselves:</p>
+<ul>
+<li>
+<p><em>“I’ll charge once I have more features.”</em></p>
+</li>
+<li>
+<p><em>“Nobody will pay this early.”</em></p>
+</li>
+<li>
+<p><em>“I’ll add pricing once I hit 1,000 users.”</em></p>
+</li>
+</ul>
+<p>That’s the graveyard mindset.<br />
+Because if people won’t pay, you don’t have a business—you have a hobby.</p>
+<p>Charging early doesn’t kill momentum. It creates it. Every dollar validates your idea more than a hundred compliments ever will. A single payment flips your mindset from “maybe” to “we have customers.”</p>
+<hr />
+<h2 id="how-to-run-a-monetize-loop"><a class="header" href="#how-to-run-a-monetize-loop">How to Run a Monetize Loop</a></h2>
+<h3 id="1-list-5--pricing-experiments"><a class="header" href="#1-list-5--pricing-experiments">1. List 5 — Pricing Experiments</a></h3>
+<p>Brainstorm five different ways you could test revenue:</p>
+<ul>
+<li>
+<p>Monthly subscription tiers.</p>
+</li>
+<li>
+<p>One-time purchase / lifetime deal.</p>
+</li>
+<li>
+<p>“Pay what you want.”</p>
+</li>
+<li>
+<p>Free trial → paid upgrade.</p>
+</li>
+<li>
+<p>Consulting / service add-on.</p>
+</li>
+</ul>
+<h3 id="2-pick-1--focus-on-one-offer"><a class="header" href="#2-pick-1--focus-on-one-offer">2. Pick 1 — Focus on One Offer</a></h3>
+<p>Choose a model that feels realistic to test this week.<br />
+Criteria:</p>
+<ul>
+<li>
+<p>Simple to explain.</p>
+</li>
+<li>
+<p>Quick to implement.</p>
+</li>
+<li>
+<p>Low risk for both you and the customer.</p>
+</li>
+</ul>
+<h3 id="3-ship-1--make-it-purchasable"><a class="header" href="#3-ship-1--make-it-purchasable">3. Ship 1 — Make It Purchasable</a></h3>
+<p>Ship a basic monetization test:</p>
+<ul>
+<li>
+<p>Add a Stripe checkout button.</p>
+</li>
+<li>
+<p>Create a Gumroad page.</p>
+</li>
+<li>
+<p>Publish a pricing page (even with one option).</p>
+</li>
+<li>
+<p>Manually invoice someone via PayPal.</p>
+</li>
+</ul>
+<p>The goal isn’t perfect billing infra—it’s proof people will pay. Add the button. You can clean up invoicing later.</p>
+<h3 id="quick-pricing-tips"><a class="header" href="#quick-pricing-tips">Quick Pricing Tips</a></h3>
+<ul>
+<li>Anchor with a clear outcome: “Save 3 hours a week for $19/month.”</li>
+<li>Fewer choices convert better; start with one plan.</li>
+<li>Round pricing unless a specific number has meaning.</li>
+</ul>
+<h3 id="4-ask-3--pitch-directly"><a class="header" href="#4-ask-3--pitch-directly">4. Ask 3 — Pitch Directly</a></h3>
+<p>Find three real prospects and present your offer:</p>
+<ul>
+<li>
+<p>DM people who showed interest.</p>
+</li>
+<li>
+<p>Email sign-ups who engaged.</p>
+</li>
+<li>
+<p>Reach out in communities where you already share progress.</p>
+</li>
+</ul>
+<p>Ask them directly: “Would you pay $X for this?” Follow with, “What would make it a clear yes?”</p>
+<h3 id="5-measure-1--track-real-revenue-signals"><a class="header" href="#5-measure-1--track-real-revenue-signals">5. Measure 1 — Track Real Revenue Signals</a></h3>
+<p>Choose one clear metric:</p>
+<ul>
+<li>
+<h1 id="of-people-who-paid"><a class="header" href="#of-people-who-paid">of people who paid.</a></h1>
+</li>
+<li>
+<p>$ of revenue collected.</p>
+</li>
+<li>
+<p>Conversion % from free to paid.</p>
+</li>
+</ul>
+<p>Remember: intent is nice, but only money counts. Track trials‑to‑paid if you run free trials; otherwise count purchases.</p>
+<h3 id="6-share-1--tell-the-story-1"><a class="header" href="#6-share-1--tell-the-story-1">6. Share 1 — Tell the Story</a></h3>
+<p>Sharing your monetization experiments builds credibility. Examples:</p>
+<ul>
+<li>
+<p>“Tested $9/month vs $19/month—5 people picked $19.”</p>
+</li>
+<li>
+<p>“Launched my first pricing page. Zero sales, but lots of feedback.”</p>
+</li>
+<li>
+<p>“Made $87 this week from a Gumroad button. First dollar online!”</p>
+</li>
+</ul>
+<p>People respect founders who charge and share transparently. Share refunds too—they build trust.</p>
+<hr />
+<h2 id="a-real-example-early-monetization"><a class="header" href="#a-real-example-early-monetization">A Real Example: Early Monetization</a></h2>
+<p>When I added pricing to Indie10k, I didn’t over-engineer.</p>
+<ul>
+<li>
+<p><strong>Ship</strong> → A simple public pricing page. No complicated Stripe integration at first.</p>
+</li>
+<li>
+<p><strong>Ask</strong> → Reached out to early users, offered lifetime discount if they ran one real loop.</p>
+</li>
+<li>
+<p><strong>Measure</strong> → 3 people paid within the first week.</p>
+</li>
+<li>
+<p><strong>Share</strong> → Posted: “Our first $57 MRR! Here’s how we tested it.”</p>
+</li>
+</ul>
+<p>That tiny win created more momentum than any number of free sign-ups. It also gave me permission to ask better questions: “What did you expect at $19?”</p>
+<hr />
+<h2 id="pitfalls-to-avoid-7"><a class="header" href="#pitfalls-to-avoid-7">Pitfalls to Avoid</a></h2>
+<ul>
+<li>
+<p><strong>Analysis paralysis.</strong> Don’t spend weeks debating $9 vs $12. Pick one and test.</p>
+</li>
+<li>
+<p><strong>Hiding pricing.</strong> If your pricing page says “contact us,” you’re stalling.</p>
+</li>
+<li>
+<p><strong>Over-engineering.</strong> Stripe, Gumroad, or PayPal—all fine. Don’t wait for perfect billing flows.</p>
+</li>
+<li>
+<p><strong>Confusing free with validation.</strong> Free users ≠ paying customers.</p>
+</li>
+<li>
+<p><strong>Hiding behind discounts.</strong> Temporary promos are fine; permanent sales hide pricing problems.</p>
+</li>
+</ul>
+<hr />
+<h2 id="micro-exercise-3"><a class="header" href="#micro-exercise-3">Micro-Exercise</a></h2>
+<p>This week, create one pricing test:</p>
+<ul>
+<li>
+<p>Add a “Buy” button.</p>
+</li>
+<li>
+<p>Post a lifetime deal.</p>
+</li>
+<li>
+<p>Offer a service add-on.</p>
+</li>
+</ul>
+<p>Then pitch it to three people. If all three say no, ask each what would have made it a yes.</p>
+<p>By the end of the week, you’ll know: did anyone care enough to pay?</p>
+<hr />
+<h2 id="key-principle-dollars-are-the-strongest-signal"><a class="header" href="#key-principle-dollars-are-the-strongest-signal">Key Principle: Dollars Are the Strongest Signal</a></h2>
+<p>Compliments, clicks, and sign-ups are nice. But a payment—no matter how small—is the clearest evidence you’re solving a real problem. Optimize for earning a first dollar fast, then improve from there.</p>
+<hr />
+<p>👉 In <strong>Chapter 17: Retain Track</strong>, we’ll focus on keeping those customers once you’ve won them—turning one-time wins into compounding revenue.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-17-retain-track--keep-customers-engaged"><a class="header" href="#chapter-17-retain-track--keep-customers-engaged">Chapter 17: Retain Track — Keep Customers Engaged</a></h1>
+<p>Getting customers is hard.<br />
+Losing them is easy.</p>
+<p>That’s why retention matters.<br />
+If validation proves demand, distribution grows awareness, and monetization turns attention into dollars—<strong>retention is how you build a durable business.</strong></p>
+<p>Because $10k MRR isn’t just about sales. It’s about keeping those dollars month after month. Retention makes growth sticky.</p>
+<hr />
+<h2 id="why-retention-is-everything"><a class="header" href="#why-retention-is-everything">Why Retention Is Everything</a></h2>
+<p>Indie founders often obsess over acquisition while ignoring retention. They chase new sign-ups while current users quietly churn.</p>
+<p>The math is brutal:</p>
+<ul>
+<li>
+<p>If you add 10 customers a week but lose 8, you’re barely moving.</p>
+</li>
+<li>
+<p>If you keep most of what you win, even slow growth compounds into a stable base.</p>
+</li>
+</ul>
+<p>Retention turns spikes into plateaus and plateaus into upward curves.</p>
+<hr />
+<h2 id="how-to-run-a-retain-loop"><a class="header" href="#how-to-run-a-retain-loop">How to Run a Retain Loop</a></h2>
+<p>TenK 6 doesn’t change—you just apply it to keeping customers.</p>
+<h3 id="1-list-5--retention-ideas"><a class="header" href="#1-list-5--retention-ideas">1. List 5 — Retention Ideas</a></h3>
+<p>Brainstorm five ways to help users stick around:</p>
+<ul>
+<li>
+<p>Simplify onboarding.</p>
+</li>
+<li>
+<p>Fix a frustrating bug.</p>
+</li>
+<li>
+<p>Add a reminder email.</p>
+</li>
+<li>
+<p>Build a small “delight” feature.</p>
+</li>
+<li>
+<p>Write a quick-start guide.</p>
+</li>
+<li>
+<p>Add a “what’s new” note in‑app.</p>
+</li>
+<li>
+<p>Offer a 15‑minute onboarding call for new customers.</p>
+</li>
+</ul>
+<h3 id="2-pick-1--choose-the-highest-leverage-fix"><a class="header" href="#2-pick-1--choose-the-highest-leverage-fix">2. Pick 1 — Choose the Highest Leverage Fix</a></h3>
+<p>Select the one that feels most impactful this week. Criteria:</p>
+<ul>
+<li>
+<p>Solves a common frustration.</p>
+</li>
+<li>
+<p>Helps users get to value faster.</p>
+</li>
+<li>
+<p>Easy enough to ship quickly.</p>
+</li>
+</ul>
+<h3 id="3-ship-1--implement-the-change"><a class="header" href="#3-ship-1--implement-the-change">3. Ship 1 — Implement the Change</a></h3>
+<p>Don’t overbuild. Ship a small improvement:</p>
+<ul>
+<li>
+<p>Add a tooltip or demo video.</p>
+</li>
+<li>
+<p>Send a weekly “success recap” email.</p>
+</li>
+<li>
+<p>Add a nudge when users stall on step one.</p>
+</li>
+<li>
+<p>Fix the bug that users complain about most.</p>
+</li>
+</ul>
+<h3 id="4-ask-3--talk-to-real-users"><a class="header" href="#4-ask-3--talk-to-real-users">4. Ask 3 — Talk to Real Users</a></h3>
+<p>Reach out to three customers:</p>
+<ul>
+<li>
+<p>Active users → ask what keeps them around.</p>
+</li>
+<li>
+<p>Churned users → ask why they left.</p>
+</li>
+<li>
+<p>New users → ask if onboarding was clear.</p>
+</li>
+</ul>
+<p>The best retention ideas come straight from these conversations. Script starters: “What almost made you quit?” for churned users; “What helped you succeed fastest?” for active users.</p>
+<h3 id="5-measure-1--track-engagement"><a class="header" href="#5-measure-1--track-engagement">5. Measure 1 — Track Engagement</a></h3>
+<p>Pick one retention metric:</p>
+<ul>
+<li>
+<p>% of users who log in weekly.</p>
+</li>
+<li>
+<p>% of trials that convert to paid.</p>
+</li>
+<li>
+<p>Churn rate (cancellations).</p>
+</li>
+<li>
+<p>NPS or customer satisfaction.</p>
+</li>
+<li>
+<p>Time‑to‑value for new users.</p>
+</li>
+</ul>
+<p>Even small changes in retention create long-term impact.</p>
+<h3 id="6-share-1--publish-the-lesson"><a class="header" href="#6-share-1--publish-the-lesson">6. Share 1 — Publish the Lesson</a></h3>
+<p>Retention stories resonate because they’re rare.<br />
+Examples:</p>
+<ul>
+<li>
+<p>“Fixed onboarding, activation rate doubled.”</p>
+</li>
+<li>
+<p>“Sent a weekly success email—4 customers re-engaged.”</p>
+</li>
+<li>
+<p>“Interviewed churned users—realized pricing wasn’t the problem, setup was.”</p>
+</li>
+</ul>
+<p>Sharing proves you’re not just chasing hype—you’re building for durability. Retention stories help others and attract users who value staying power.</p>
+<hr />
+<h2 id="a-real-example-indie10k-retention"><a class="header" href="#a-real-example-indie10k-retention">A Real Example: Indie10k Retention</a></h2>
+<p>When early Indie10k users signed up, some never touched the product again. At first, I thought I needed <em>more features</em>.</p>
+<p>But after a few user chats, the real issue was onboarding: people didn’t understand how to start a TenK 6 loop.</p>
+<ul>
+<li>
+<p><strong>Ship</strong> → Added a guided “first loop” tutorial.</p>
+</li>
+<li>
+<p><strong>Ask</strong> → Interviewed 3 users about the new flow.</p>
+</li>
+<li>
+<p><strong>Measure</strong> → Activation rate rose from ~20% to ~60%.</p>
+</li>
+<li>
+<p><strong>Share</strong> → Posted the update on Indie Hackers: “Turns out onboarding, not features, was killing momentum.”</p>
+</li>
+</ul>
+<p>That loop mattered more than any new feature could. It taught me to start every quarter by checking activation first.</p>
+<hr />
+<h2 id="pitfalls-to-avoid-8"><a class="header" href="#pitfalls-to-avoid-8">Pitfalls to Avoid</a></h2>
+<ul>
+<li>
+<p><strong>Endless features.</strong> Adding shiny new things ≠ retention. Fixing pain points does.</p>
+</li>
+<li>
+<p><strong>Ignoring churn.</strong> If people cancel, talk to them. Silence is feedback too.</p>
+</li>
+<li>
+<p><strong>Measuring vanity.</strong> Daily active users sound nice, but revenue churn tells the real story.</p>
+</li>
+<li>
+<p><strong>Over-automation.</strong> Manual check-ins with customers can be more powerful than fancy retention systems.</p>
+</li>
+<li>
+<p><strong>Ignoring activation.</strong> If new users don’t reach value quickly, no later retention tactic will stick.</p>
+</li>
+</ul>
+<hr />
+<h2 id="micro-exercise-4"><a class="header" href="#micro-exercise-4">Micro-Exercise</a></h2>
+<p>Think of one reason a user might leave your product. Ship a fix this week—email, feature tweak, or onboarding step. Ask three users what they think. Measure if engagement improves. Write one sentence about what you’ll try next.</p>
+<hr />
+<h2 id="key-principle-retention-compounds"><a class="header" href="#key-principle-retention-compounds">Key Principle: Retention Compounds</a></h2>
+<p>Every customer you keep adds to the base for next month’s growth.<br />
+Retention isn’t glamorous, but it’s the difference between sprinting forever and building a business that lasts.</p>
+<hr />
+<p>👉 With Retain covered, you now have all four tracks: <strong>Validate, Distribute, Monetize, Retain.</strong><br />
+Together with the six core loops, they form a complete system for compounding indie momentum.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-18-outro--your-first-loop-starts-now"><a class="header" href="#chapter-18-outro--your-first-loop-starts-now">Chapter 18: Outro — Your First Loop Starts Now</a></h1>
+<p>You’ve reached the end of this handbook.<br />
+But really, this isn’t the end. It’s the beginning.</p>
+<p>You now know the rhythm:<br />
+<strong>List → Pick → Ship → Ask → Measure → Share.</strong><br />
+Six steps. One loop. Evidence over intuition.</p>
+<p>The magic of TenK 6 isn’t in reading about it.<br />
+It’s in <em>running it.</em></p>
+<hr />
+<h2 id="the-indie-founder-advantage"><a class="header" href="#the-indie-founder-advantage">The Indie Founder Advantage</a></h2>
+<p>You don’t need a big team, a giant budget, or investor permission.<br />
+As an indie founder, you have speed, focus, and freedom.</p>
+<p>What you need is momentum.<br />
+And momentum is built loop by loop.</p>
+<hr />
+<h2 id="what-happens-next"><a class="header" href="#what-happens-next">What Happens Next</a></h2>
+<p>Here’s the only task I’ll leave you with:</p>
+<p>👉 <strong>Run your first loop.</strong></p>
+<ul>
+<li>
+<p>Write down 5 ideas tonight.</p>
+</li>
+<li>
+<p>Pick one tomorrow.</p>
+</li>
+<li>
+<p>Ship something this week.</p>
+</li>
+<li>
+<p>Ask 3 people for feedback.</p>
+</li>
+<li>
+<p>Measure one thing that matters.</p>
+</li>
+<li>
+<p>Share your progress publicly.</p>
+</li>
+</ul>
+<p>That’s it. One loop.</p>
+<p>When you finish, reflect. Then run another.<br />
+And another.<br />
+And another.</p>
+<p>Soon, you’ll look back and realize: you didn’t just ship features—you built momentum.</p>
+<hr />
+<h2 id="a-final-word"><a class="header" href="#a-final-word">A Final Word</a></h2>
+<p>Reaching $10k MRR isn’t magic.<br />
+It’s not luck.<br />
+It’s the compounding effect of dozens of small loops, stacked patiently and relentlessly.</p>
+<p>The sooner you start, the sooner momentum takes over.</p>
+<p>So don’t just close this book.<br />
+Close your laptop, grab a sticky note, and write:</p>
+<p><strong>List 5.</strong></p>
+<p>Your first loop starts now.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
