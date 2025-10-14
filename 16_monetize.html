@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Monetize Track - The TenK 6 Handbook</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="A pocket playbook for indie founders: six repeatable loops to reach $10k MRR through evidence-based experimentation and consistent momentum.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The TenK 6 Handbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/inkylabs-dev/tenk6" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chapter-16-monetize-track--turn-attention-into-revenue"><a class="header" href="#chapter-16-monetize-track--turn-attention-into-revenue">Chapter 16: Monetize Track — Turn Attention Into Revenue</a></h1>
+<p>Validation proves people care.<br />
+Distribution gets more people to notice.<br />
+But here’s the truth: <strong>attention alone isn’t a business.</strong></p>
+<p>At some point, you have to ask for money. Do it earlier than feels comfortable so you learn whether you have a business or a fan club.</p>
+<p>That’s what the <strong>Monetize Track</strong> is for—turning curiosity into cash. Not with a perfect business model, but with small, evidence-based pricing experiments.</p>
+<hr />
+<h2 id="why-monetization-matters-early"><a class="header" href="#why-monetization-matters-early">Why Monetization Matters Early</a></h2>
+<p>Indie founders delay monetization out of fear. They tell themselves:</p>
+<ul>
+<li>
+<p><em>“I’ll charge once I have more features.”</em></p>
+</li>
+<li>
+<p><em>“Nobody will pay this early.”</em></p>
+</li>
+<li>
+<p><em>“I’ll add pricing once I hit 1,000 users.”</em></p>
+</li>
+</ul>
+<p>That’s the graveyard mindset.<br />
+Because if people won’t pay, you don’t have a business—you have a hobby.</p>
+<p>Charging early doesn’t kill momentum. It creates it. Every dollar validates your idea more than a hundred compliments ever will. A single payment flips your mindset from “maybe” to “we have customers.”</p>
+<hr />
+<h2 id="how-to-run-a-monetize-loop"><a class="header" href="#how-to-run-a-monetize-loop">How to Run a Monetize Loop</a></h2>
+<h3 id="1-list-5--pricing-experiments"><a class="header" href="#1-list-5--pricing-experiments">1. List 5 — Pricing Experiments</a></h3>
+<p>Brainstorm five different ways you could test revenue:</p>
+<ul>
+<li>
+<p>Monthly subscription tiers.</p>
+</li>
+<li>
+<p>One-time purchase / lifetime deal.</p>
+</li>
+<li>
+<p>“Pay what you want.”</p>
+</li>
+<li>
+<p>Free trial → paid upgrade.</p>
+</li>
+<li>
+<p>Consulting / service add-on.</p>
+</li>
+</ul>
+<h3 id="2-pick-1--focus-on-one-offer"><a class="header" href="#2-pick-1--focus-on-one-offer">2. Pick 1 — Focus on One Offer</a></h3>
+<p>Choose a model that feels realistic to test this week.<br />
+Criteria:</p>
+<ul>
+<li>
+<p>Simple to explain.</p>
+</li>
+<li>
+<p>Quick to implement.</p>
+</li>
+<li>
+<p>Low risk for both you and the customer.</p>
+</li>
+</ul>
+<h3 id="3-ship-1--make-it-purchasable"><a class="header" href="#3-ship-1--make-it-purchasable">3. Ship 1 — Make It Purchasable</a></h3>
+<p>Ship a basic monetization test:</p>
+<ul>
+<li>
+<p>Add a Stripe checkout button.</p>
+</li>
+<li>
+<p>Create a Gumroad page.</p>
+</li>
+<li>
+<p>Publish a pricing page (even with one option).</p>
+</li>
+<li>
+<p>Manually invoice someone via PayPal.</p>
+</li>
+</ul>
+<p>The goal isn’t perfect billing infra—it’s proof people will pay. Add the button. You can clean up invoicing later.</p>
+<h3 id="quick-pricing-tips"><a class="header" href="#quick-pricing-tips">Quick Pricing Tips</a></h3>
+<ul>
+<li>Anchor with a clear outcome: “Save 3 hours a week for $19/month.”</li>
+<li>Fewer choices convert better; start with one plan.</li>
+<li>Round pricing unless a specific number has meaning.</li>
+</ul>
+<h3 id="4-ask-3--pitch-directly"><a class="header" href="#4-ask-3--pitch-directly">4. Ask 3 — Pitch Directly</a></h3>
+<p>Find three real prospects and present your offer:</p>
+<ul>
+<li>
+<p>DM people who showed interest.</p>
+</li>
+<li>
+<p>Email sign-ups who engaged.</p>
+</li>
+<li>
+<p>Reach out in communities where you already share progress.</p>
+</li>
+</ul>
+<p>Ask them directly: “Would you pay $X for this?” Follow with, “What would make it a clear yes?”</p>
+<h3 id="5-measure-1--track-real-revenue-signals"><a class="header" href="#5-measure-1--track-real-revenue-signals">5. Measure 1 — Track Real Revenue Signals</a></h3>
+<p>Choose one clear metric:</p>
+<ul>
+<li>
+<h1 id="of-people-who-paid"><a class="header" href="#of-people-who-paid">of people who paid.</a></h1>
+</li>
+<li>
+<p>$ of revenue collected.</p>
+</li>
+<li>
+<p>Conversion % from free to paid.</p>
+</li>
+</ul>
+<p>Remember: intent is nice, but only money counts. Track trials‑to‑paid if you run free trials; otherwise count purchases.</p>
+<h3 id="6-share-1--tell-the-story"><a class="header" href="#6-share-1--tell-the-story">6. Share 1 — Tell the Story</a></h3>
+<p>Sharing your monetization experiments builds credibility. Examples:</p>
+<ul>
+<li>
+<p>“Tested $9/month vs $19/month—5 people picked $19.”</p>
+</li>
+<li>
+<p>“Launched my first pricing page. Zero sales, but lots of feedback.”</p>
+</li>
+<li>
+<p>“Made $87 this week from a Gumroad button. First dollar online!”</p>
+</li>
+</ul>
+<p>People respect founders who charge and share transparently. Share refunds too—they build trust.</p>
+<hr />
+<h2 id="a-real-example-early-monetization"><a class="header" href="#a-real-example-early-monetization">A Real Example: Early Monetization</a></h2>
+<p>When I added pricing to Indie10k, I didn’t over-engineer.</p>
+<ul>
+<li>
+<p><strong>Ship</strong> → A simple public pricing page. No complicated Stripe integration at first.</p>
+</li>
+<li>
+<p><strong>Ask</strong> → Reached out to early users, offered lifetime discount if they ran one real loop.</p>
+</li>
+<li>
+<p><strong>Measure</strong> → 3 people paid within the first week.</p>
+</li>
+<li>
+<p><strong>Share</strong> → Posted: “Our first $57 MRR! Here’s how we tested it.”</p>
+</li>
+</ul>
+<p>That tiny win created more momentum than any number of free sign-ups. It also gave me permission to ask better questions: “What did you expect at $19?”</p>
+<hr />
+<h2 id="pitfalls-to-avoid"><a class="header" href="#pitfalls-to-avoid">Pitfalls to Avoid</a></h2>
+<ul>
+<li>
+<p><strong>Analysis paralysis.</strong> Don’t spend weeks debating $9 vs $12. Pick one and test.</p>
+</li>
+<li>
+<p><strong>Hiding pricing.</strong> If your pricing page says “contact us,” you’re stalling.</p>
+</li>
+<li>
+<p><strong>Over-engineering.</strong> Stripe, Gumroad, or PayPal—all fine. Don’t wait for perfect billing flows.</p>
+</li>
+<li>
+<p><strong>Confusing free with validation.</strong> Free users ≠ paying customers.</p>
+</li>
+<li>
+<p><strong>Hiding behind discounts.</strong> Temporary promos are fine; permanent sales hide pricing problems.</p>
+</li>
+</ul>
+<hr />
+<h2 id="micro-exercise"><a class="header" href="#micro-exercise">Micro-Exercise</a></h2>
+<p>This week, create one pricing test:</p>
+<ul>
+<li>
+<p>Add a “Buy” button.</p>
+</li>
+<li>
+<p>Post a lifetime deal.</p>
+</li>
+<li>
+<p>Offer a service add-on.</p>
+</li>
+</ul>
+<p>Then pitch it to three people. If all three say no, ask each what would have made it a yes.</p>
+<p>By the end of the week, you’ll know: did anyone care enough to pay?</p>
+<hr />
+<h2 id="key-principle-dollars-are-the-strongest-signal"><a class="header" href="#key-principle-dollars-are-the-strongest-signal">Key Principle: Dollars Are the Strongest Signal</a></h2>
+<p>Compliments, clicks, and sign-ups are nice. But a payment—no matter how small—is the clearest evidence you’re solving a real problem. Optimize for earning a first dollar fast, then improve from there.</p>
+<hr />
+<p>👉 In <strong>Chapter 17: Retain Track</strong>, we’ll focus on keeping those customers once you’ve won them—turning one-time wins into compounding revenue.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="15_distribute.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="17_retain.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="15_distribute.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="17_retain.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

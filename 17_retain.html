@@ -1,0 +1,420 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Retain Track - The TenK 6 Handbook</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="A pocket playbook for indie founders: six repeatable loops to reach $10k MRR through evidence-based experimentation and consistent momentum.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The TenK 6 Handbook</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/inkylabs-dev/tenk6" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chapter-17-retain-track--keep-customers-engaged"><a class="header" href="#chapter-17-retain-track--keep-customers-engaged">Chapter 17: Retain Track — Keep Customers Engaged</a></h1>
+<p>Getting customers is hard.<br />
+Losing them is easy.</p>
+<p>That’s why retention matters.<br />
+If validation proves demand, distribution grows awareness, and monetization turns attention into dollars—<strong>retention is how you build a durable business.</strong></p>
+<p>Because $10k MRR isn’t just about sales. It’s about keeping those dollars month after month. Retention makes growth sticky.</p>
+<hr />
+<h2 id="why-retention-is-everything"><a class="header" href="#why-retention-is-everything">Why Retention Is Everything</a></h2>
+<p>Indie founders often obsess over acquisition while ignoring retention. They chase new sign-ups while current users quietly churn.</p>
+<p>The math is brutal:</p>
+<ul>
+<li>
+<p>If you add 10 customers a week but lose 8, you’re barely moving.</p>
+</li>
+<li>
+<p>If you keep most of what you win, even slow growth compounds into a stable base.</p>
+</li>
+</ul>
+<p>Retention turns spikes into plateaus and plateaus into upward curves.</p>
+<hr />
+<h2 id="how-to-run-a-retain-loop"><a class="header" href="#how-to-run-a-retain-loop">How to Run a Retain Loop</a></h2>
+<p>TenK 6 doesn’t change—you just apply it to keeping customers.</p>
+<h3 id="1-list-5--retention-ideas"><a class="header" href="#1-list-5--retention-ideas">1. List 5 — Retention Ideas</a></h3>
+<p>Brainstorm five ways to help users stick around:</p>
+<ul>
+<li>
+<p>Simplify onboarding.</p>
+</li>
+<li>
+<p>Fix a frustrating bug.</p>
+</li>
+<li>
+<p>Add a reminder email.</p>
+</li>
+<li>
+<p>Build a small “delight” feature.</p>
+</li>
+<li>
+<p>Write a quick-start guide.</p>
+</li>
+<li>
+<p>Add a “what’s new” note in‑app.</p>
+</li>
+<li>
+<p>Offer a 15‑minute onboarding call for new customers.</p>
+</li>
+</ul>
+<h3 id="2-pick-1--choose-the-highest-leverage-fix"><a class="header" href="#2-pick-1--choose-the-highest-leverage-fix">2. Pick 1 — Choose the Highest Leverage Fix</a></h3>
+<p>Select the one that feels most impactful this week. Criteria:</p>
+<ul>
+<li>
+<p>Solves a common frustration.</p>
+</li>
+<li>
+<p>Helps users get to value faster.</p>
+</li>
+<li>
+<p>Easy enough to ship quickly.</p>
+</li>
+</ul>
+<h3 id="3-ship-1--implement-the-change"><a class="header" href="#3-ship-1--implement-the-change">3. Ship 1 — Implement the Change</a></h3>
+<p>Don’t overbuild. Ship a small improvement:</p>
+<ul>
+<li>
+<p>Add a tooltip or demo video.</p>
+</li>
+<li>
+<p>Send a weekly “success recap” email.</p>
+</li>
+<li>
+<p>Add a nudge when users stall on step one.</p>
+</li>
+<li>
+<p>Fix the bug that users complain about most.</p>
+</li>
+</ul>
+<h3 id="4-ask-3--talk-to-real-users"><a class="header" href="#4-ask-3--talk-to-real-users">4. Ask 3 — Talk to Real Users</a></h3>
+<p>Reach out to three customers:</p>
+<ul>
+<li>
+<p>Active users → ask what keeps them around.</p>
+</li>
+<li>
+<p>Churned users → ask why they left.</p>
+</li>
+<li>
+<p>New users → ask if onboarding was clear.</p>
+</li>
+</ul>
+<p>The best retention ideas come straight from these conversations. Script starters: “What almost made you quit?” for churned users; “What helped you succeed fastest?” for active users.</p>
+<h3 id="5-measure-1--track-engagement"><a class="header" href="#5-measure-1--track-engagement">5. Measure 1 — Track Engagement</a></h3>
+<p>Pick one retention metric:</p>
+<ul>
+<li>
+<p>% of users who log in weekly.</p>
+</li>
+<li>
+<p>% of trials that convert to paid.</p>
+</li>
+<li>
+<p>Churn rate (cancellations).</p>
+</li>
+<li>
+<p>NPS or customer satisfaction.</p>
+</li>
+<li>
+<p>Time‑to‑value for new users.</p>
+</li>
+</ul>
+<p>Even small changes in retention create long-term impact.</p>
+<h3 id="6-share-1--publish-the-lesson"><a class="header" href="#6-share-1--publish-the-lesson">6. Share 1 — Publish the Lesson</a></h3>
+<p>Retention stories resonate because they’re rare.<br />
+Examples:</p>
+<ul>
+<li>
+<p>“Fixed onboarding, activation rate doubled.”</p>
+</li>
+<li>
+<p>“Sent a weekly success email—4 customers re-engaged.”</p>
+</li>
+<li>
+<p>“Interviewed churned users—realized pricing wasn’t the problem, setup was.”</p>
+</li>
+</ul>
+<p>Sharing proves you’re not just chasing hype—you’re building for durability. Retention stories help others and attract users who value staying power.</p>
+<hr />
+<h2 id="a-real-example-indie10k-retention"><a class="header" href="#a-real-example-indie10k-retention">A Real Example: Indie10k Retention</a></h2>
+<p>When early Indie10k users signed up, some never touched the product again. At first, I thought I needed <em>more features</em>.</p>
+<p>But after a few user chats, the real issue was onboarding: people didn’t understand how to start a TenK 6 loop.</p>
+<ul>
+<li>
+<p><strong>Ship</strong> → Added a guided “first loop” tutorial.</p>
+</li>
+<li>
+<p><strong>Ask</strong> → Interviewed 3 users about the new flow.</p>
+</li>
+<li>
+<p><strong>Measure</strong> → Activation rate rose from ~20% to ~60%.</p>
+</li>
+<li>
+<p><strong>Share</strong> → Posted the update on Indie Hackers: “Turns out onboarding, not features, was killing momentum.”</p>
+</li>
+</ul>
+<p>That loop mattered more than any new feature could. It taught me to start every quarter by checking activation first.</p>
+<hr />
+<h2 id="pitfalls-to-avoid"><a class="header" href="#pitfalls-to-avoid">Pitfalls to Avoid</a></h2>
+<ul>
+<li>
+<p><strong>Endless features.</strong> Adding shiny new things ≠ retention. Fixing pain points does.</p>
+</li>
+<li>
+<p><strong>Ignoring churn.</strong> If people cancel, talk to them. Silence is feedback too.</p>
+</li>
+<li>
+<p><strong>Measuring vanity.</strong> Daily active users sound nice, but revenue churn tells the real story.</p>
+</li>
+<li>
+<p><strong>Over-automation.</strong> Manual check-ins with customers can be more powerful than fancy retention systems.</p>
+</li>
+<li>
+<p><strong>Ignoring activation.</strong> If new users don’t reach value quickly, no later retention tactic will stick.</p>
+</li>
+</ul>
+<hr />
+<h2 id="micro-exercise"><a class="header" href="#micro-exercise">Micro-Exercise</a></h2>
+<p>Think of one reason a user might leave your product. Ship a fix this week—email, feature tweak, or onboarding step. Ask three users what they think. Measure if engagement improves. Write one sentence about what you’ll try next.</p>
+<hr />
+<h2 id="key-principle-retention-compounds"><a class="header" href="#key-principle-retention-compounds">Key Principle: Retention Compounds</a></h2>
+<p>Every customer you keep adds to the base for next month’s growth.<br />
+Retention isn’t glamorous, but it’s the difference between sprinting forever and building a business that lasts.</p>
+<hr />
+<p>👉 With Retain covered, you now have all four tracks: <strong>Validate, Distribute, Monetize, Retain.</strong><br />
+Together with the six core loops, they form a complete system for compounding indie momentum.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="16_monetize.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="18_outro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="16_monetize.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="18_outro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
